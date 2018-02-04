@@ -1,0 +1,24 @@
+.carousel {
+
+}
+
+.slick-slider {
+  width: 90%;
+  margin-left: 5%;
+}
+
+.slick-slide {
+  background-color: pink;
+  text-align: center;
+  height: 250px;
+}
+
+.slick-list {
+  width: 100%;
+}
+
+.slick-next:before, .slick-prev:before {
+  color: red;
+  font-size: 20px;
+
+}

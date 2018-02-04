@@ -1,0 +1,56 @@
+.header {
+  background-color: $near-black;
+  color: $light-text;
+  padding-left: 5%;
+  padding-right: 5%;
+  height: 80px;
+  font-family: $body-font;
+}
+
+.brand {
+  position: absolute;
+  height: 100%;
+  color: $accent-color;
+  
+  h5 {
+    line-height: 75px;
+  }
+}
+
+.menu {
+  height: 100%;
+  width: 80%;
+  margin-left: 20%;
+
+  @media (max-width: 700px) {
+    display: none;
+  }
+
+  ul {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    margin: 0;
+  }
+
+  li {
+    cursor: pointer;
+    font-weight: 400;
+    text-transform: uppercase;
+    font-size: 1.4rem;
+    line-height: 75px;
+  }
+
+  li.active {
+    background-color: $accent-color;
+  }
+
+  .search {
+    input {
+      font-family: $input-font;
+      padding: 5px;
+      background-color: white;
+      font-size: 1.6rem;
+    }
+  }
+}

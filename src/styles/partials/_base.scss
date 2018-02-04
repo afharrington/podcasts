@@ -1,0 +1,73 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  font-size: 62.5%;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $header-font;
+  font-weight: normal;
+}
+
+h1 {
+  font-size: 5.0rem;
+  @media (max-width: 500px) {
+    font-size: 4.0rem;
+  }
+}
+
+h2 {
+  font-size: 4.0rem;
+  @media (max-width: 500px) {
+    font-size: 3.0rem;
+  }
+}
+
+h3 {
+  font-size: 3.0rem;
+  @media (max-width: 500px) {
+    font-size: 2.4rem;
+  }
+}
+
+h4 {
+  font-size: 2.4rem;
+  @media (max-width: 500px) {
+    font-size: 1.8rem;
+  }
+}
+
+h5 {
+  font-size: 1.8rem;
+  @media (max-width: 500px) {
+    font-size: 1.6rem;
+  }
+}
+
+h6 {
+  font-size: 1.6rem;
+  @media (max-width: 500px) {
+    font-size: 1.4rem;
+  }
+}
+
+p {
+  font-size: 1.4rem;
+  font-family: $body-font;
+  @media (max-width: 500px) {
+    font-size: 1.4rem;
+  }
+}
+
+.section-title {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 25px;
+}

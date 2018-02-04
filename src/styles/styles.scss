@@ -1,0 +1,14 @@
+// Global Styles
+@import './partials/_variables';
+@import './partials/_base';
+@import './partials/_mixins';
+
+// Templates
+@import './partials/_view';
+
+// Components
+@import './partials/_header';
+@import './partials/_carousel';
+
+// Views
+@import './partials/_home';

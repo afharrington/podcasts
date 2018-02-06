@@ -57,9 +57,10 @@ p {
       font-size: 1.4rem; } }
 
 .section-title {
+  color: #f2f8ff;
   width: 100%;
   text-align: center;
-  margin-bottom: 25px; }
+  margin-bottom: 50px; }
 
 .view {
   padding: 5%;
@@ -67,7 +68,7 @@ p {
 
 .header {
   background-color: #232323;
-  color: white;
+  color: #f2f8ff;
   padding-left: 5%;
   padding-right: 5%;
   height: 80px;
@@ -76,7 +77,7 @@ p {
 .brand {
   position: absolute;
   height: 100%;
-  color: #2CFFD9; }
+  color: #c2e0ff; }
   .brand h5 {
     line-height: 75px; }
 
@@ -99,28 +100,119 @@ p {
     font-size: 1.4rem;
     line-height: 75px; }
   .menu li.active {
-    background-color: #2CFFD9; }
+    background-color: #c2e0ff; }
   .menu .search input {
     font-family: "Roboto", "Open Sans", sans-serif;
     padding: 5px;
     background-color: white;
     font-size: 1.6rem; }
 
+.carousel {
+  margin-left: -5%;
+  margin-right: -5%;
+  margin-bottom: 75px;
+  padding: 10px; }
+
 .slick-slider {
   width: 90%;
   margin-left: 5%; }
 
 .slick-slide {
-  background-color: pink;
-  text-align: center;
-  height: 250px; }
+  text-align: center; }
 
 .slick-list {
   width: 100%; }
 
 .slick-next:before, .slick-prev:before {
-  color: red;
+  color: #c2e0ff;
   font-size: 20px; }
+
+.carousel-item {
+  text-align: center;
+  padding: 15px;
+  color: #f2f8ff;
+  margin: 15px; }
+
+.carousel-item-thumbnail {
+  margin: 0 auto;
+  width: 150px;
+  height: 150px; }
+
+.carousel-item-title {
+  margin-top: 20px;
+  margin-bottom: 20px; }
+  .carousel-item-title p:first-of-type {
+    text-transform: uppercase;
+    font-weight: bold; }
+  .carousel-item-title p:nth-of-type(2) {
+    font-family: "Roboto Condensed", "Open Sans Condensed", sans-serif;
+    font-style: italic; }
+
+.carousel-item-description {
+  font-family: "Roboto Condensed", "Open Sans Condensed", sans-serif;
+  width: 90%;
+  margin: 0 auto;
+  padding: 15px;
+  color: #f2f8ff;
+  font-size: 1.6rem; }
+
+.episode-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 75px; }
+
+.episode-grid-item {
+  color: #232323;
+  background-color: #f2f8ff;
+  width: 40%;
+  min-width: 350px;
+  margin: 20px;
+  padding: 10px;
+  display: grid;
+  grid-template-areas: "img episode episode" "img date date" "img play link";
+  grid-template-columns: 1fr 2fr 1fr; }
+  @media (max-width: 600px) {
+    .episode-grid-item {
+      width: 100%; } }
+  .episode-grid-item img {
+    grid-area: img;
+    width: 75px;
+    height: 75px;
+    margin-right: 10px; }
+  .episode-grid-item p {
+    font-size: 1.4rem;
+    font-family: "Roboto Condensed", "Open Sans Condensed", sans-serif; }
+  .episode-grid-item .episode-title {
+    grid-area: episode;
+    font-weight: bold;
+    font-family: "Roboto Condensed", "Open Sans Condensed", sans-serif; }
+  .episode-grid-item .episode-date {
+    grid-area: date; }
+  .episode-grid-item .episode-play {
+    grid-area: play;
+    font-size: 2.0rem;
+    display: flex; }
+    .episode-grid-item .episode-play .play-button {
+      fill: #8BC34A;
+      margin-right: 10px; }
+    .episode-grid-item .episode-play .player-selection {
+      cursor: pointer;
+      margin: 5px;
+      font-size: 1.4rem;
+      font-weight: bold;
+      transition: all 0.3s ease; }
+    .episode-grid-item .episode-play .player-selection:hover {
+      border-bottom: 5px solid #8BC34A; }
+    .episode-grid-item .episode-play .settings-button {
+      cursor: pointer;
+      fill: #757575;
+      font-size: 1.2rem; }
+  .episode-grid-item .episode-link {
+    text-align: right; }
+    .episode-grid-item .episode-link .go-button {
+      font-size: 2.0rem;
+      color: #232323; }
 
 .home {
   height: 100vh;
@@ -134,7 +226,7 @@ p {
   position: absolute;
   top: 15%;
   width: 60%;
-  color: white; }
+  color: #f2f8ff; }
   @media (max-width: 600px) {
     .home-text {
       width: 90%; } }
@@ -158,4 +250,22 @@ p {
     width: 200px;
     color: #232323; }
   .home-buttons-container button:first-of-type {
-    background: #2CFFD9; }
+    background: #c2e0ff; }
+
+.featured {
+  background: black;
+  /* Old browsers */
+  background: -moz-linear-gradient(left, black 0%, #232323 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left, right, color-stop(0%, black), color-stop(100%, #232323));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(left, black 0%, #232323 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(left, black 0%, #232323 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(left, black 0%, #232323 100%);
+  /* IE10+ */
+  background: linear-gradient(to right, black 0%, #232323 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#000000',GradientType=0 );
+  /* IE6-9 */ }

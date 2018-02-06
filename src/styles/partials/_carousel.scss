@@ -1,6 +1,11 @@
 .carousel {
-
+  margin-left: -5%;
+  margin-right: -5%;
+  margin-bottom: $section-bottom-margin;
+  padding: 10px;
 }
+
+// React Slick Classes
 
 .slick-slider {
   width: 90%;
@@ -8,9 +13,7 @@
 }
 
 .slick-slide {
-  background-color: pink;
   text-align: center;
-  height: 250px;
 }
 
 .slick-list {
@@ -18,7 +21,45 @@
 }
 
 .slick-next:before, .slick-prev:before {
-  color: red;
+  color: $accent-color;
   font-size: 20px;
+}
 
+// Carousel Item
+
+.carousel-item {
+  text-align: center;
+  padding: 15px;
+  color: $light-text;
+  margin: 15px;
+}
+
+.carousel-item-thumbnail {
+  margin: 0 auto;
+  width: 150px;
+  height: 150px;
+}
+
+.carousel-item-title {
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+  p:first-of-type {
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+
+  p:nth-of-type(2) {
+    font-family: $detail-font;
+    font-style: italic;
+  }
+}
+
+.carousel-item-description {
+  font-family: $detail-font;
+  width: 90%;
+  margin: 0 auto;
+  padding: 15px;
+  color: $light-text;
+  font-size: 1.6rem;
 }

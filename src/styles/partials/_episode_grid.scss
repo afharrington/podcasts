@@ -1,0 +1,88 @@
+// Styles that apply to episode grid items regardless of multi or single show grid
+
+.episode-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: $section-bottom-margin;
+}
+
+// Specific to multi-show episode grids
+.episode-grid-item {
+  color: $dark-text;
+  background-color: $near-white;
+  width: 40%;
+  min-width: 350px;
+  margin: 20px;
+  padding: 10px;
+
+  @media (max-width: 600px) {
+    width: 100%;
+  }
+  display: grid;
+  grid-template-areas: "img episode episode"
+                       "img date date"
+                       "img play link";
+  grid-template-columns: 1fr 2fr 1fr;
+
+  img {
+    grid-area: img;
+    width: 75px;
+    height: 75px;
+    margin-right: 10px;
+  }
+
+  p {
+    font-size: 1.4rem;
+    font-family: $detail-font;
+  }
+
+  .episode-title {
+    grid-area: episode;
+    font-weight: bold;
+    font-family: $detail-font;
+  }
+
+  .episode-date {
+    grid-area: date;
+
+  }
+
+  .episode-play {
+    grid-area: play;
+    font-size: 2.0rem;
+    display: flex;
+
+    .play-button {
+      fill: $play-button-color;
+      margin-right: 10px;
+    }
+
+    .player-selection {
+      cursor: pointer;
+      margin: 5px;
+      font-size: 1.4rem;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    .player-selection:hover {
+      border-bottom: 5px solid $play-button-color;
+    }
+
+    .settings-button {
+      cursor: pointer;
+      fill: $med-gray;
+      font-size: 1.2rem;
+    }
+  }
+
+  .episode-link {
+    text-align: right;
+
+    .go-button {
+      font-size: 2.0rem;
+      color: $dark-text;
+    }
+  }
+}

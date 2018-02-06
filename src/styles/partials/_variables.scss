@@ -9,7 +9,23 @@ $detail-font: $roboto-condensed;
 $input-font: $roboto;
 
 // Colors
+$light-gray: #e0e0e0;
+$med-gray: #757575;
+$dark-gray: #424242;
 $near-black: #232323;
-$light-text: white;
+$near-white: #f2f8ff;
+$mint: #2CFFD9;
+$ice-blue: #c2e0ff;
+$light-green: #8BC34A;
+
+// Color Assignments
+$light-text: $near-white;
 $dark-text: #232323;
-$accent-color: #2CFFD9;
+$accent-color: $ice-blue;
+$play-button-color: $light-green;
+
+$background-left: black;
+$background-right: $near-black;
+
+// Layout
+$section-bottom-margin: 75px;

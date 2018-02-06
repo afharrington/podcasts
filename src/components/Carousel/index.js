@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Slider from 'react-slick';
+import CarouselItem from './CarouselItem';
 
 import '../../styles/styles.css';
 
@@ -10,18 +11,23 @@ class Carousel extends Component {
       dots: false,
       infinite: true,
       slidesToShow: 2,
-      slidesToScroll: 1
+      slidesToScroll: 1,
+      autoplay: true,
+      speed: 600,
+      autoplaySpeed: 4000,
+      pauseOnHover: true,
+      responsive: [{ breakpoint: 600, settings: { slidesToShow: 1 }}]
     }
 
     return (
       <div className='carousel'>
         <Slider {...settings}>
-          <div className='carousel-item'><h3>1</h3></div>
-          <div className='carousel-item'><h3>2</h3></div>
-          <div className='carousel-item'><h3>3</h3></div>
-          <div className='carousel-item'><h3>4</h3></div>
-          <div className='carousel-item'><h3>5</h3></div>
-          <div className='carousel-item'><h3>6</h3></div>
+          <div><CarouselItem/></div>
+          <div><CarouselItem/></div>
+          <div><CarouselItem/></div>
+          <div><CarouselItem/></div>
+          <div><CarouselItem/></div>
+          <div><CarouselItem/></div>
         </Slider>
       </div>
     )

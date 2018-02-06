@@ -1,0 +1,17 @@
+.list-settings {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.list-toggle-view {
+  font-size: 1.4rem;
+  margin-bottom: 20px;
+  margin-right: 10px;
+  margin-left: 25px;
+
+  .icon {
+    font-size: 1.6rem;
+    cursor: pointer;
+    margin-right: 5px;
+  }
+}

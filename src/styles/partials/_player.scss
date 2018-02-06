@@ -1,0 +1,9 @@
+.player {
+  position: fixed;
+  z-index: 5;
+  top: 80px;
+  width: 100%;
+  background-color: $accent-color;
+  height: 50px;
+  box-shadow: $sm-shadow;
+}

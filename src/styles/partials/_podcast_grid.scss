@@ -1,0 +1,29 @@
+.podcast-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.podcast-grid-item {
+  margin: 20px;
+  text-align: center;
+
+  img {
+    width: 125px;
+    height: 125px;
+  }
+
+ .podcast-grid-item-authors, .podcast-grid-item-episode, .podcast-grid-item-date  {
+    font-family: $detail-font;
+    font-size: 1.4rem;
+  }
+
+  .podcast-grid-item-title {
+    margin-top: 10px;
+  }
+
+  .podcast-grid-item-episode {
+    margin-top: 5px;
+  }
+
+}

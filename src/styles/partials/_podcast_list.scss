@@ -1,0 +1,37 @@
+.podcast-list {
+  width: 70%;
+  margin-left: 30%;
+
+  @media (max-width: 600px) {
+    width: 100%;
+    margin-left: 0%;
+  }
+}
+
+.podcast-list-item {
+  border-bottom: 1px solid $med-gray;
+  padding: 10px;
+  display: grid;
+  grid-template-areas: "title episode"
+                       "title date";
+  grid-template-columns: 1fr 2fr;
+}
+
+.podcast-list-item-title {
+  grid-area: title;
+  margin-right: 10px;
+  font-weight: bold;
+  color: $accent-color;
+  text-transform: uppercase;
+
+}
+
+.podcast-list-item-episode {
+  grid-area: episode;
+}
+
+.podcast-list-item-date {
+  grid-area: date;
+  font-family: $detail-font;
+  font-size: 1.2rem;
+}

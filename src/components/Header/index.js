@@ -7,13 +7,13 @@ class Header extends Component {
     return (
       <div className='header'>
         <div className='brand'>
-          <h5>CodeCasts</h5>
+          <a href='/'><h5>CodeCasts</h5></a>
         </div>
         <nav className='menu'>
           <ul>
-            <li>Featured</li>
-            <li>Browse</li>
-            <li>About</li>
+            <li><a href='/featured'>Featured</a></li>
+            <li><a href='/browse'>Browse</a></li>
+            <li><a href='/about'>About</a></li>
             <li className="search"><input></input></li>
           </ul>
         </nav>

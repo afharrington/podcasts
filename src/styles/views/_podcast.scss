@@ -1,0 +1,23 @@
+.podcast {
+  @include linearGradientLeftRight($background-left, $background-right);
+  text-align: center;
+  color: $light-text;
+
+  img {
+    width: 200px;
+    margin-bottom: 15px;
+  }
+
+  .podcast-authors {
+    margin-bottom: 20px;
+  }
+
+  .podcast-description {
+    width: 60%;
+    margin: 0 auto;
+
+    @media (max-width: 600px) {
+      width: 80%;
+    }
+  }
+}

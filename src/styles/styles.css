@@ -96,7 +96,7 @@ p {
   margin-left: 20px; }
   .brand h5, .brand a {
     line-height: 50px;
-    color: #c2e0ff; }
+    color: #2CFFD9; }
   .brand a {
     text-decoration: none; }
 
@@ -123,9 +123,9 @@ p {
     text-decoration: none; }
   .menu a:hover {
     font-weight: bold;
-    color: #c2e0ff; }
+    color: #2CFFD9; }
   .menu li.active {
-    background-color: #c2e0ff; }
+    background-color: #2CFFD9; }
   .menu .search input {
     font-family: "Roboto", "Open Sans", sans-serif;
     padding: 2px;
@@ -152,7 +152,7 @@ p {
   width: 100%; }
 
 .slick-next:before, .slick-prev:before {
-  color: #c2e0ff;
+  color: #2CFFD9;
   font-size: 20px; }
 
 .carousel-item {
@@ -214,7 +214,8 @@ p {
   .episode-grid-item .episode-title {
     grid-area: episode;
     font-weight: bold;
-    font-family: "Roboto Condensed", "Open Sans Condensed", sans-serif; }
+    font-family: "Roboto Condensed", "Open Sans Condensed", sans-serif;
+    line-height: 1.0; }
   .episode-grid-item .episode-date {
     grid-area: date; }
   .episode-grid-item .episode-play {
@@ -222,7 +223,7 @@ p {
     font-size: 2.0rem;
     display: flex; }
     .episode-grid-item .episode-play .play-button {
-      fill: #8BC34A;
+      fill: #797471;
       margin-right: 10px; }
     .episode-grid-item .episode-play .player-selection {
       cursor: pointer;
@@ -231,7 +232,7 @@ p {
       font-weight: bold;
       transition: all 0.3s ease; }
     .episode-grid-item .episode-play .player-selection:hover {
-      border-bottom: 5px solid #8BC34A; }
+      border-bottom: 5px solid #797471; }
     .episode-grid-item .episode-play .settings-button {
       cursor: pointer;
       fill: #757575;
@@ -245,11 +246,179 @@ p {
 .player {
   position: fixed;
   z-index: 5;
-  top: 80px;
+  bottom: 0px;
   width: 100%;
-  background-color: #c2e0ff;
-  height: 50px;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); }
+  background-color: #2CFFD9;
+  height: 80px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  display: grid;
+  grid-template-areas: "audio title";
+  grid-template-columns: 1fr 1.5fr;
+  padding: 10px;
+  transition: height 0.2s ease; }
+  .player.collapsed {
+    height: 0px;
+    padding: 0; }
+    .player.collapsed .player-toggle {
+      right: 10px;
+      width: 100px; }
+
+.player-toggle {
+  height: 25px;
+  background-color: #2CFFD9;
+  width: 60px;
+  text-align: center;
+  position: absolute;
+  top: -25px;
+  right: 25px;
+  border-radius: 2px 2px 0px 0px;
+  transition: all 0.2s ease;
+  cursor: pointer; }
+  .player-toggle p {
+    line-height: 25px;
+    font-size: 1.2rem;
+    text-transform: uppercase; }
+
+.player-toggle:hover, .player-toggle:hover {
+  background-color: #00c5a2; }
+
+.react-player {
+  display: none;
+  position: absolute;
+  top: 0; }
+
+.player-audio {
+  grid-area: audio;
+  height: 80px; }
+
+.player-title {
+  grid-area: title;
+  height: 80px;
+  margin-left: 25px; }
+  .player-title span {
+    font-size: 1.2rem;
+    font-family: "Roboto", "Open Sans", sans-serif; }
+  .player-title p {
+    margin-top: 10px;
+    font-size: 1.4rem; }
+
+.player-show {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  height: 25px;
+  background-color: #2CFFD9;
+  width: 125px;
+  text-align: center;
+  right: 10px;
+  border-radius: 2px 2px 0px 0px;
+  transition: all 0.2s ease;
+  cursor: pointer; }
+  .player-show p {
+    line-height: 25px;
+    font-size: 1.2rem;
+    text-transform: uppercase; }
+
+.audio-player {
+  margin-left: 10%;
+  margin-right: 10%; }
+  .audio-player input {
+    width: 100%; }
+
+.audio-player-controls {
+  text-align: center; }
+  .audio-player-controls .play, .audio-player-controls .pause {
+    cursor: pointer;
+    font-size: 2.6rem; }
+  .audio-player-controls .back, .audio-player-controls .forward {
+    cursor: pointer;
+    font-size: 2.0rem;
+    margin-left: 10px;
+    margin-right: 10px; }
+  .audio-player-controls svg:hover {
+    fill: #f2f8ff; }
+
+.audio-player-duration {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  height: 20px;
+  top: 30%; }
+  .audio-player-duration p {
+    font-size: 1.2rem;
+    padding: 2px; }
+
+input[type=range] {
+  -webkit-appearance: none;
+  margin: 5px 0;
+  width: 100%; }
+
+input[type=range]:focus {
+  outline: none; }
+
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 15px;
+  cursor: pointer;
+  animate: 0.2s;
+  border-radius: 1.3px; }
+
+input[type=range]::-webkit-slider-thumb {
+  height: 15px;
+  width: 0px;
+  background: #bababa;
+  cursor: pointer;
+  -webkit-appearance: none; }
+
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  background: #3071a9;
+  border-radius: 1.3px;
+  border: 0.2px solid #010101; }
+
+input[type=range]::-moz-range-thumb {
+  height: 20px;
+  width: 0px;
+  background: #bababa;
+  cursor: pointer; }
+
+input[type=range]::-ms-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  animate: 0.2s;
+  background: transparent;
+  border-color: transparent;
+  border-width: 16px 0;
+  color: transparent; }
+
+input[type=range]::-ms-fill-lower {
+  background: #2a6495;
+  border: 0.2px solid #010101;
+  border-radius: 2.6px;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d; }
+
+input[type=range]::-ms-fill-upper {
+  background: #3071a9;
+  border: 0.2px solid #010101;
+  border-radius: 2.6px;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d; }
+
+input[type=range]::-ms-thumb {
+  height: 20px;
+  width: 0px;
+  background: #bababa;
+  cursor: pointer; }
+
+input[type=range]:focus::-ms-fill-lower {
+  background: #3071a9; }
+
+input[type=range]:focus::-ms-fill-upper {
+  background: #367ebd; }
 
 .category-list {
   position: absolute;
@@ -323,7 +492,7 @@ p {
   grid-area: title;
   margin-right: 10px;
   font-weight: bold;
-  color: #c2e0ff;
+  color: #2CFFD9;
   text-transform: uppercase; }
 
 .podcast-list-item-episode {
@@ -333,6 +502,51 @@ p {
   grid-area: date;
   font-family: "Roboto Condensed", "Open Sans Condensed", sans-serif;
   font-size: 1.2rem; }
+
+.podcast-episode {
+  color: #f2f8ff;
+  text-align: left;
+  margin: 50px auto;
+  width: 80%;
+  display: grid;
+  grid-template-areas: 'title       title       duration' 'date        play        play' 'description description description';
+  grid-template-columns: 1fr 2fr 1fr; }
+
+.podcast-episode-title {
+  font-weight: bold;
+  grid-area: title;
+  margin-bottom: 5px; }
+
+.podcast-episode-duration {
+  grid-area: duration;
+  text-align: right; }
+
+.podcast-episode-date {
+  grid-area: date; }
+
+.podcast-episode-play {
+  grid-area: play;
+  display: flex; }
+  .podcast-episode-play .podcast-episode-play-button {
+    padding-top: 2px;
+    font-size: 1.8rem;
+    margin-right: 5px;
+    margin-left: 5px; }
+  .podcast-episode-play .podcast-episode-settings-button {
+    font-size: 1.2rem;
+    margin-left: 5px; }
+
+.podcast-episode-description {
+  grid-area: description;
+  margin-top: 5px; }
+
+.podcast-episode-toggle {
+  cursor: pointer;
+  text-transform: uppercase;
+  color: #2CFFD9;
+  font-size: 1.2rem;
+  margin-top: 5px;
+  font-weight: bold; }
 
 .home {
   margin-top: 50px;
@@ -372,7 +586,7 @@ p {
     width: 200px;
     color: #232323; }
   .home-buttons-container button:first-of-type {
-    background: #c2e0ff; }
+    background: #2CFFD9; }
 
 .featured {
   background: black;
@@ -409,3 +623,34 @@ p {
   /* W3C */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#000000',GradientType=0 );
   /* IE6-9 */ }
+
+.podcast {
+  background: black;
+  /* Old browsers */
+  background: -moz-linear-gradient(left, black 0%, #232323 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left, right, color-stop(0%, black), color-stop(100%, #232323));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(left, black 0%, #232323 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(left, black 0%, #232323 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(left, black 0%, #232323 100%);
+  /* IE10+ */
+  background: linear-gradient(to right, black 0%, #232323 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#000000',GradientType=0 );
+  /* IE6-9 */
+  text-align: center;
+  color: #f2f8ff; }
+  .podcast img {
+    width: 200px;
+    margin-bottom: 15px; }
+  .podcast .podcast-authors {
+    margin-bottom: 20px; }
+  .podcast .podcast-description {
+    width: 60%;
+    margin: 0 auto; }
+    @media (max-width: 600px) {
+      .podcast .podcast-description {
+        width: 80%; } }

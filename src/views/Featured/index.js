@@ -1,10 +1,18 @@
 import React, { Component } from 'react';
-import Carousel from '../../components/Carousel';
-import EpisodeGrid from '../../components/EpisodeGrid';
+import { connect } from 'react-redux';
+import { fetchRecentAllPodcasts } from '../../actions/actions.js';
+
+import Carousel from './Carousel';
+import EpisodeGrid from './EpisodeGrid';
+import Player from '../../components/Player';
 
 import '../../styles/styles.css';
 
 class Featured extends Component {
+
+  componentDidMount() {
+    this.props.fetchRecentAllPodcasts();
+  }
 
   render() {
     return (
@@ -13,11 +21,20 @@ class Featured extends Component {
           <div className='section-title'><h3>Featured Podcasts</h3></div>
           <Carousel/>
           <div className='section-title'><h3>Recent Episodes</h3></div>
-          <EpisodeGrid/>
+          { this.props.recentEpisodes &&
+          <EpisodeGrid recentEpisodes={this.props.recentEpisodes}/>
+          }
         </div>
+  
       </div>
     )
   }
 }
 
-export default Featured;
+
+function mapStateToProps(state) {
+  return {
+    recentEpisodes: state.featured.recentEpisodes };
+}
+
+export default connect(mapStateToProps, { fetchRecentAllPodcasts })(Featured);

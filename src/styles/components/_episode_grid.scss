@@ -41,11 +41,11 @@
     grid-area: episode;
     font-weight: bold;
     font-family: $detail-font;
+    line-height: 1.0;
   }
 
   .episode-date {
     grid-area: date;
-
   }
 
   .episode-play {

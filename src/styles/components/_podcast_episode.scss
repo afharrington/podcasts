@@ -1,0 +1,57 @@
+.podcast-episode {
+  color: $light-text;
+  text-align: left;
+  margin: 50px auto;
+  width: 80%;
+  display: grid;
+  grid-template-areas: 'title       title       duration'
+                       'date        play        play'
+                       'description description description';
+  grid-template-columns: 1fr 2fr 1fr;
+}
+
+.podcast-episode-title {
+  font-weight: bold;
+  grid-area: title;
+  margin-bottom: 5px;
+}
+
+.podcast-episode-duration {
+  grid-area: duration;
+  text-align: right;
+}
+
+.podcast-episode-date {
+  grid-area: date;
+}
+
+.podcast-episode-play {
+  grid-area: play;
+  display: flex;
+
+  .podcast-episode-play-button {
+    padding-top: 2px;
+    font-size: 1.8rem;
+    margin-right: 5px;
+    margin-left: 5px;
+  }
+
+  .podcast-episode-settings-button {
+    font-size: 1.2rem;
+    margin-left: 5px;
+  }
+}
+
+.podcast-episode-description {
+  grid-area: description;
+  margin-top: 5px;
+}
+
+.podcast-episode-toggle {
+  cursor: pointer;
+  text-transform: uppercase;
+  color: $accent-color;
+  font-size: 1.2rem;
+  margin-top: 5px;
+  font-weight: bold;
+}

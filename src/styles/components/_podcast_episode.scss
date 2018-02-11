@@ -1,5 +1,8 @@
 .podcast-episode {
-  color: $light-text;
+  color: $dark-text;
+  border: 5px solid $accent-color;
+  background-color: $light-text;
+  padding: 10px;
   text-align: left;
   margin: 50px auto;
   width: 80%;
@@ -7,7 +10,7 @@
   grid-template-areas: 'title       title       duration'
                        'date        play        play'
                        'description description description';
-  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-columns: 2fr 3fr 1fr;
 }
 
 .podcast-episode-title {
@@ -50,8 +53,13 @@
 .podcast-episode-toggle {
   cursor: pointer;
   text-transform: uppercase;
-  color: $accent-color;
+  color: $dark-text;
+  background-color: $accent-color;
+  width: 50px;
+  height: 20px;
+  text-align: center;
+  border-radius: 1000px;
   font-size: 1.2rem;
-  margin-top: 5px;
+  margin-top: 10px;
   font-weight: bold;
 }

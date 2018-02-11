@@ -133,6 +133,7 @@ class AudioPlayer extends Component {
 
     let buttonClass = playing ? 'pause-button' : 'play-button';
 
+
     return (
       <div className='audio-player'>
 

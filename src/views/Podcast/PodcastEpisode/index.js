@@ -2,28 +2,58 @@ import React, { Component } from 'react';
 import FaPlayCircle from 'react-icons/lib/fa/play-circle';
 import FaCog from 'react-icons/lib/fa/cog';
 import Moment from 'react-moment';
+import { connect } from 'react-redux';
+import { playEpisode } from '../../../actions/actions.js';
 
 import '../../../styles/styles.css';
 
 class PodcastEpisode extends Component {
 
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      episode: this.props.episode,
+      collapsed: true
+    }
+
+    this.sendEpisodeToPlayer = this.sendEpisodeToPlayer.bind(this);
+    this.toggleDescription = this.toggleDescription.bind(this);
+  }
+
+  componentDidMount() {
+    if (this.props.firstEpisode === true) {
+      this.setState({ collapsed: false });
+    }
+  }
+
+  toggleDescription() {
+    this.setState({ collapsed: !this.state.collapsed });
+  }
+
+  sendEpisodeToPlayer() {
+    this.props.playEpisode(this.state.episode);
+  }
+
   render () {
-    const episode = this.props.episode;
+    const episode = this.state.episode;
 
     return (
       <div className='podcast-episode'>
-        <p className='podcast-episode-title'>{episode.episodeTitle}</p>
-        <p className='podcast-episode-duration'>{episode.episodeDuration}</p>
-        <p className='podcast-episode-date'>Aired: <Moment format="MM/DD/YYYY" date={episode.episodeDate}/></p>
+        <p className='podcast-episode-title'>{episode.title}</p>
+        <p className='podcast-episode-duration'>{episode.audioDuration}</p>
+        <p className='podcast-episode-date'>Aired: <Moment format="MM/DD/YYYY" date={episode.publishedDate}/></p>
         <div className='podcast-episode-play'>
-          <FaPlayCircle className='podcast-episode-play-button'/>
-          <p>Or listen with: <span class='player-selection'>Spotify</span> <FaCog className='podcast-episode-settings-button'/></p>
+          <FaPlayCircle  className='podcast-episode-play-button' onClick={this.sendEpisodeToPlayer} />
+          <p>Or listen with: <span className='player-selection'>Spotify</span> <FaCog className='podcast-episode-settings-button'/></p>
         </div>
-        <p className='podcast-episode-description'>{episode.episodeDescription}</p>
-        <p className='podcast-episode-toggle'>LESS</p>
+        { !this.state.collapsed && <p className='podcast-episode-description'>{episode.description}</p>}
+        <p className='podcast-episode-toggle' onClick={this.toggleDescription}>{this.state.collapsed ? 'MORE' : 'LESS'}</p>
       </div>
     )
   }
 }
 
-export default PodcastEpisode;
+
+
+export default connect(null, { playEpisode })(PodcastEpisode);

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchRecentAllPodcasts } from '../../actions/actions.js';
+import _ from 'lodash';
+import { fetchRecentAllPodcasts, fetchAllPodcasts } from '../../actions/actions.js';
 
 import Carousel from './Carousel';
 import EpisodeGrid from './EpisodeGrid';
@@ -10,11 +11,27 @@ import '../../styles/styles.css';
 
 class Featured extends Component {
 
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      featuredPodcastIDs: [487, 493, 495, 507, 509, 510, 512]
+    }
+  }
+
   componentDidMount() {
+    // this.props.fetchRecentPodcasts();
     this.props.fetchRecentAllPodcasts();
+    this.props.fetchAllPodcasts();
   }
 
   render() {
+    if (this.props.allPodcasts) {
+        let allPodcastsById = _.mapKeys(this.props.allPodcasts, 'id');
+        let allPodcastsByDate = _.orderBy(this.props.allPodcasts, ['latestReleaseDate'], ['desc']);
+    }
+
+
     return (
       <div className='featured view'>
         <div className='featured-podcasts'>
@@ -25,16 +42,16 @@ class Featured extends Component {
           <EpisodeGrid recentEpisodes={this.props.recentEpisodes}/>
           }
         </div>
-  
       </div>
     )
   }
 }
 
-
 function mapStateToProps(state) {
   return {
-    recentEpisodes: state.featured.recentEpisodes };
+    recentEpisodes: state.featured.recentEpisodes,
+    allPodcasts: state.featured.allPodcasts
+  };
 }
 
-export default connect(mapStateToProps, { fetchRecentAllPodcasts })(Featured);
+export default connect(mapStateToProps, { fetchAllPodcasts, fetchRecentAllPodcasts })(Featured);

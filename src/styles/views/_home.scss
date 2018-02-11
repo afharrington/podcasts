@@ -30,7 +30,12 @@
   button {
     @include button;
     width: 200px;
-    color: $dark-text;
+
+    a {
+      color: $dark-text;
+      text-decoration: none;
+    }
+
   }
 
   button:first-of-type {

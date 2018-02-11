@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import PodcastEpisode from './PodcastEpisode';
+import { connect } from 'react-redux';
+import { fetchEpisodes, fetchPodcast } from '../../actions/actions.js';
 
 import '../../styles/styles.css';
 
@@ -15,27 +17,65 @@ class Podcast extends Component {
       podcastAuthors: 'Front End Happy Hour',
       episodes: [
         {
-          episodeTitle: 'Episode 049 - Independent taste testing',
-          episodeDuration: '32:05',
-          episodeDate: '2018-01-22T04:05:07',
-          episodeDescription: 'We are back in 2018, for the first episode of the New Year we have two special guests, Shirley Wu and Amy Wibowo to talk with us about freelancing and running your own business. We discuss how to start freelance work, how to manage clients and how to handle difficult clients.',
+          title: 'Episode 049 - Independent taste testing',
+          duration: '32:05',
+          publishedDate: '2018-01-22T04:05:07',
+          description: 'We are back in 2018, for the first episode of the New Year we have two special guests, Shirley Wu and Amy Wibowo to talk with us about freelancing and running your own business. We discuss how to start freelance work, how to manage clients and how to handle difficult clients.',
           audioUrl: 'http://feeds.soundcloud.com/stream/387211061-front-end-happy-hour-episode-049-independent-taste-testing.mp3'
         }
       ]
     }
+
+    this.renderEpisodes = this.renderEpisodes.bind(this);
+  }
+
+  componentDidMount() {
+    this.props.fetchPodcast(491);
+    this.props.fetchEpisodes(491);
+  }
+
+  renderEpisodes() {
+    const episodes = this.props.episodes;
+    // return <PodcastEpisode episode={this.state.episodes[0]}/>
+
+    let episodes1to14 = episodes.slice(1, 15);
+
+    return  (
+      <div>
+        <PodcastEpisode firstEpisode={true} episode={this.state.episodes[0]} />
+        { episodes1to14.map(episode => {
+          return <PodcastEpisode firstEpisode={false} key={episode.id} episode={episode}/>
+        })}
+    </div>
+    )
   }
 
   render() {
-    return (
-      <div className='podcast view'>
-        <img src={this.state.podcastImageUrl} alt='' />
-        <h3 className='podcast-title'>{this.state.podcastTitle}</h3>
-        <h5 className='podcast-authors'>{this.state.podcastAuthors}</h5>
-        <h6 className='podcast-description'>{this.state.podcastDescription}</h6>
-        <PodcastEpisode episode={this.state.episodes[0]}/>
-      </div>
-    )
+    if (this.props.podcast) {
+      const podcast = this.props.podcast;
+
+      return (
+        <div className='podcast view'>
+          <img src={podcast.imageUrl} alt='' />
+          <h3 className='podcast-title'>{podcast.title}</h3>
+          <h5 className='podcast-authors'>{podcast.artists}</h5>
+          <p className='podcast-description'>{podcast.description}</p>
+          <div className='section-title'><h3>Episodes</h3></div>
+          <div className='podcast-episodes'>
+            { this.props.episodes && this.renderEpisodes() }
+          </div>
+        </div>
+      )
+    } else {
+      return <div></div>
+    }
   }
 }
 
-export default Podcast;
+function mapStateToProps(state) {
+  return {
+    episodes: state.podcast.episodes,
+    podcast: state.podcast.podcast };
+}
+
+export default connect(mapStateToProps, { fetchEpisodes, fetchPodcast })(Podcast);

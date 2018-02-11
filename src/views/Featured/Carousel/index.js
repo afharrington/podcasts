@@ -14,7 +14,7 @@ class Carousel extends Component {
       slidesToScroll: 1,
       autoplay: true,
       speed: 600,
-      autoplaySpeed: 4000,
+      autoplaySpeed: 3500,
       pauseOnHover: true,
       responsive: [{ breakpoint: 600, settings: { slidesToShow: 1 }}]
     }

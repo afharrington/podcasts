@@ -14,7 +14,7 @@ class EpisodeGridItem extends Component {
     return (
       <div className='episode-grid-item'>
         <img src={episode.imageUrl} alt=''/>
-        <h5 className='episode-title'>#1550 How to do your own PR right</h5>
+        <h5 className='episode-title'>{episode.title}</h5>
         <p className='episode-date'>Aired: 02/03/2018</p>
         <div className='episode-play'>
           <FaPlayCircle className='play-button'/>

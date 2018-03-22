@@ -33,7 +33,7 @@ class Podcast extends Component {
       const episodes = this.props.episodes[this.state.showId];
 
       // Initially renders the first 15 episodes only
-  
+
       let episodesSlice = episodes.slice(0, this.state.numberEpisodes);
 
       return  (
@@ -43,6 +43,16 @@ class Podcast extends Component {
             return <PodcastEpisode firstEpisode={false} key={episode.id} episode={episode}/>
           })}
       </div>
+      )
+    } else {
+      return (
+        <div class="spinner">
+          <div class="rect1"></div>
+          <div class="rect2"></div>
+          <div class="rect3"></div>
+          <div class="rect4"></div>
+          <div class="rect5"></div>
+        </div>
       )
     }
   }
@@ -60,12 +70,9 @@ class Podcast extends Component {
           <img src={podcast.imageUrl} alt='' />
           <h3 className='podcast-title'>{podcast.title}</h3>
           <h5 className='podcast-authors'>{podcast.artists}</h5>
-          <p className='podcast-description'>{podcast.description}</p>
+          <p className='podcast-description'>"{podcast.description}"</p>
 
-          { this.props.episodes[this.state.showId] &&
-            <div className='section-title'><h3>Episodes</h3></div>
-          }
-
+          <div className='section-title'><h3>Episodes</h3></div>
           <div className='podcast-episodes'>
             { this.props.episodes && this.renderEpisodes() }
 
@@ -77,7 +84,9 @@ class Podcast extends Component {
         </div>
       )
     } else {
-      return <div></div>
+      return (
+        <div></div>
+      )
     }
   }
 }

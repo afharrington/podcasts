@@ -49,10 +49,19 @@ class Featured extends Component {
       return (
         <Carousel featuredPodcasts={featuredPodcasts}/>
       );
+    } else {
+      return (
+      <div class="spinner">
+        <div class="rect1"></div>
+        <div class="rect2"></div>
+        <div class="rect3"></div>
+        <div class="rect4"></div>
+        <div class="rect5"></div>
+      </div>
+      )
     }
   }
 
-  // TO DO: Give some indication if still loading recently aired
   renderRecentEpisodes() {
     if (this.props.recentPodcasts) {
       let { recentPodcasts } = this.props;
@@ -66,6 +75,16 @@ class Featured extends Component {
           { this.state.numberEpisodes < 30 &&
             <p className='more-episodes' onClick={this.renderMoreEpisodes}>More Episodes</p>
           }
+        </div>
+      )
+    } else {
+      return (
+        <div class="spinner">
+          <div class="rect1"></div>
+          <div class="rect2"></div>
+          <div class="rect3"></div>
+          <div class="rect4"></div>
+          <div class="rect5"></div>
         </div>
       )
     }

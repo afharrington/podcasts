@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
 
 import '../../../styles/styles.css';
 
@@ -10,7 +11,10 @@ class CarouselItem extends Component {
 
       return (
         <div className='carousel-item'>
-          <img className='carousel-item-thumbnail' src={podcast.imageUrl} alt=''/>
+
+          <NavLink to={`/podcast/${podcast.id}`}>
+            <img className='carousel-item-thumbnail' src={podcast.imageUrl} alt=''/>
+          </NavLink>
 
           <div className='carousel-item-title'>
             <p>{podcast.title}</p>

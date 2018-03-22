@@ -17,8 +17,8 @@ class Home extends Component {
         <div className='home-text'>
           <h2>Podcast discovery for developers and tech industry professionals</h2>
           <div className='home-buttons-container'>
-            <button><NavLink to='/featured'>Featured Podcasts</NavLink></button>
-            <button><NavLink to='/browse'>Browse by Topic</NavLink></button>
+            <NavLink to='/featured'><button className='home-button-featured'>Featured Podcasts</button></NavLink>
+            <NavLink to='/browse'><button className='home-button-browse'>Browse by Topic</button></NavLink>
           </div>
         </div>
       </div>

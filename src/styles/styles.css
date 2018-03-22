@@ -163,7 +163,7 @@ p {
   margin-left: 20px; }
   .brand h5, .brand a {
     line-height: 50px;
-    color: #2CFFD9; }
+    color: #2cffec; }
   .brand a {
     text-decoration: none; }
 
@@ -190,10 +190,10 @@ p {
     color: #f2f8ff;
     text-decoration: none; }
   .menu a:hover {
-    background-color: #2CFFD9;
+    background-color: #2cffec;
     color: #232323; }
   .menu a.active {
-    background-color: #2CFFD9;
+    background-color: #2cffec;
     color: #232323; }
   .menu .active {
     color: pink; }
@@ -224,7 +224,7 @@ p {
   width: 100%; }
 
 .slick-next:before, .slick-prev:before {
-  color: #2CFFD9;
+  color: #2cffec;
   font-size: 20px; }
 
 .carousel-item {
@@ -319,7 +319,7 @@ p {
       margin-right: 5px;
       width: 35px; }
     .episode-grid-item .episode-play .play-button:hover {
-      fill: #2CFFD9; }
+      fill: #2cffec; }
     .episode-grid-item .episode-play .go-button {
       cursor: pointer; }
       .episode-grid-item .episode-play .go-button svg {
@@ -332,7 +332,7 @@ p {
   z-index: 5;
   bottom: 0px;
   width: 100%;
-  background-color: #2CFFD9;
+  background-color: #2cffec;
   height: 80px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   display: grid;
@@ -349,7 +349,7 @@ p {
 
 .player-toggle {
   height: 25px;
-  background-color: #2CFFD9;
+  background-color: #2cffec;
   width: 60px;
   text-align: center;
   position: absolute;
@@ -392,7 +392,7 @@ p {
   position: fixed;
   bottom: 0;
   height: 25px;
-  background-color: #2CFFD9;
+  background-color: #2cffec;
   width: 125px;
   text-align: center;
   right: 10px;
@@ -577,7 +577,7 @@ input[type=range]:focus::-ms-fill-upper {
   grid-area: title;
   margin-right: 10px;
   font-weight: bold;
-  color: #2CFFD9;
+  color: #2cffec;
   text-transform: uppercase; }
 
 .podcast-list-item-episode {
@@ -590,7 +590,7 @@ input[type=range]:focus::-ms-fill-upper {
 
 .podcast-episode {
   color: #232323;
-  border-top: 5px solid #2CFFD9;
+  border-top: 5px solid #2cffec;
   background-color: #f2f8ff;
   padding: 10px;
   text-align: left;
@@ -630,7 +630,7 @@ input[type=range]:focus::-ms-fill-upper {
     .podcast-episode-play .podcast-episode-play-button path {
       fill: #232323; }
   .podcast-episode-play .podcast-episode-play-button:hover path {
-    fill: #2CFFD9; }
+    fill: #2cffec; }
   .podcast-episode-play .podcast-go-button svg {
     width: 20px;
     height: 20px; }
@@ -648,7 +648,7 @@ input[type=range]:focus::-ms-fill-upper {
   cursor: pointer;
   text-transform: uppercase;
   color: #232323;
-  background-color: #2CFFD9;
+  background-color: #2cffec;
   width: 50px;
   height: 20px;
   line-height: 20px;
@@ -684,6 +684,7 @@ input[type=range]:focus::-ms-fill-upper {
   flex-wrap: wrap;
   justify-content: center; }
   .home-buttons-container button {
+    cursor: pointer;
     border-radius: 2px;
     margin-left: 20px;
     margin-right: 20px;
@@ -693,12 +694,17 @@ input[type=range]:focus::-ms-fill-upper {
     font-size: 1.2rem;
     text-transform: uppercase;
     font-weight: bold;
-    width: 200px; }
+    width: 200px;
+    transition: all 0.3s ease-in; }
     .home-buttons-container button a {
       color: #232323;
       text-decoration: none; }
-  .home-buttons-container button:first-of-type {
-    background: #2CFFD9; }
+  .home-buttons-container .home-button-featured {
+    background: #2cffec;
+    transition: all 0.3s ease-in; }
+  .home-buttons-container .home-button-browse {
+    background: white;
+    transition: all 0.3s ease-in; }
 
 .featured {
   background: black;
@@ -720,7 +726,7 @@ input[type=range]:focus::-ms-fill-upper {
   .featured .more-episodes {
     cursor: pointer;
     text-align: center;
-    color: #2CFFD9; }
+    color: #2cffec; }
 
 .browse {
   background: black;
@@ -774,4 +780,4 @@ input[type=range]:focus::-ms-fill-upper {
   .podcast .more-episodes {
     margin-top: 50px;
     cursor: pointer;
-    color: #2CFFD9; }
+    color: #2cffec; }

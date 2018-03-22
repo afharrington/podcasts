@@ -11,7 +11,7 @@ export const PLAY_EPISODE = 'play_episode';
 
 
 // const ROOT = uri.rootUri;
-const ROOT = 'http://devpodcasts-dev.us-west-2.elasticbeanstalk.com';
+const ROOT = '//devpodcasts-dev.us-west-2.elasticbeanstalk.com';
 
 // Fetches 50 most recent podcasts with 1 episode
 export function fetchRecentPodcasts() {

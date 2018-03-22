@@ -26,6 +26,17 @@
   grid-template-columns: 1fr 2fr 1fr;
   grid-template-rows: 35px 20px 20px;
 
+
+  a {
+    text-decoration: none;
+    color: $dark-text;
+    transition: all 0.2s ease-in;
+  }
+
+  a:hover {
+    color: $accent-color;
+  }
+
   img {
     grid-area: img;
     width: 75px;
@@ -64,6 +75,7 @@
       fill: $play-button-color;
       margin-right: 5px;
       width: 35px;
+      transition: all 0.2s ease-in;
     }
 
     .play-button:hover {

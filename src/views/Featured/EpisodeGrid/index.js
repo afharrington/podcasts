@@ -9,7 +9,7 @@ class EpisodeGrid extends Component {
   renderGridItems() {
     return this.props.recentPodcasts.map(podcast => {
       return (
-        <EpisodeGridItem key={podcast.id} episode={podcast.episodes[0]} imageUrl={podcast.imageUrl} />
+        <EpisodeGridItem key={podcast.id} podcastTitle={podcast.title} episode={podcast.episodes[0]} imageUrl={podcast.imageUrl} />
       )
     })
   }

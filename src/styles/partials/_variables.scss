@@ -22,14 +22,15 @@ $light-green: #8BC34A;
 $light-text: $near-white;
 $dark-text: #232323;
 $accent-color: $mint;
-$play-button-color: #797471;
+$play-button-color: $dark-text;
+$go-button-color: $dark-text;
 $player-track-color: #bababa;
 
 $background-left: black;
 $background-right: $near-black;
 
 // Layout
-$section-bottom-margin: 75px;
+$section-bottom-margin: 50px;
 
 // Box Shadows
 $sm-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);

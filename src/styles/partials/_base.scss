@@ -3,6 +3,7 @@ body, html {
   padding: 0;
   overflow-x: hidden;
   font-size: 62.5%;
+  @include linearGradientLeftRight($background-left, $background-right);
 }
 
 h1, h2, h3, h4, h5, h6, p {
@@ -90,4 +91,8 @@ p {
     cursor: pointer;
     font-size: 1.6rem;
   }
+}
+
+.view {
+  padding-bottom: 100px;
 }

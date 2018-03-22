@@ -1,8 +1,15 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import _ from 'lodash';
+import { fetchAllPodcasts } from '../../actions/actions.js';
 import '../../styles/styles.css';
 
 class Home extends Component {
+
+  componentDidMount() {
+    this.props.fetchAllPodcasts();
+  }
 
   render() {
     return (
@@ -19,4 +26,5 @@ class Home extends Component {
   }
 }
 
-export default Home;
+
+export default connect(null, { fetchAllPodcasts })(Home);

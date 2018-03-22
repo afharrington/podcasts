@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import FaPlayCircle from 'react-icons/lib/fa/play-circle';
+import FaAngleDown from 'react-icons/lib/fa/angle-down';
+import FaAngleUp from 'react-icons/lib/fa/angle-up';
 import FaCog from 'react-icons/lib/fa/cog';
 import Moment from 'react-moment';
+import MdLaunch from 'react-icons/lib/md/launch';
 import { connect } from 'react-redux';
 import { playEpisode } from '../../../actions/actions.js';
 
@@ -37,6 +40,7 @@ class PodcastEpisode extends Component {
 
   render () {
     const episode = this.state.episode;
+    console.log(episode.audioDuration);
 
     return (
       <div className='podcast-episode'>
@@ -45,10 +49,12 @@ class PodcastEpisode extends Component {
         <p className='podcast-episode-date'>Aired: <Moment format="MM/DD/YYYY" date={episode.publishedDate}/></p>
         <div className='podcast-episode-play'>
           <FaPlayCircle  className='podcast-episode-play-button' onClick={this.sendEpisodeToPlayer} />
-          <p>Or listen with: <span className='player-selection'>Spotify</span> <FaCog className='podcast-episode-settings-button'/></p>
+          <a className='podcast-go-button' href={episode.sourceUrl} target='_blank' rel='noreferrer no follow'><MdLaunch/></a>
+          {/*
+          <p>Or listen with: <span className='player-selection'>Spotify</span> <FaCog className='podcast-episode-settings-button'/></p> */}
         </div>
         { !this.state.collapsed && <p className='podcast-episode-description'>{episode.description}</p>}
-        <p className='podcast-episode-toggle' onClick={this.toggleDescription}>{this.state.collapsed ? 'MORE' : 'LESS'}</p>
+        <p className='podcast-episode-toggle' onClick={this.toggleDescription}>{this.state.collapsed ? 'MORE' : 'HIDE'}</p>
       </div>
     )
   }

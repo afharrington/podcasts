@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { categories } from '../../data/categories.js';
 import FaCaretDown from 'react-icons/lib/fa/caret-down';
 
 import '../../styles/styles.css';
@@ -8,13 +9,12 @@ class CategoryList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      categories: [
-        { categoryName: 'General Interest', categoryCode: 1, categoryCount: 23},
-        { categoryName: 'Career & Education', categoryCode: 2, categoryCount: 12},
-        { categoryName: 'Freelancing', categoryCode: 3, categoryCount: 8},
-        { categoryName: 'Python', categoryCode: 4, categoryCount: 4}
-      ]
+      categories: categories
     }
+  }
+
+  componentDidMount() {
+    console.log(this.state.categories);
   }
 
   renderCategories() {

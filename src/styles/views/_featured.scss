@@ -1,3 +1,9 @@
 .featured {
   @include linearGradientLeftRight($background-left, $background-right);
+
+  .more-episodes {
+    cursor: pointer;
+    text-align: center;
+    color: $accent-color;
+  }
 }

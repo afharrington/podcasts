@@ -6,7 +6,14 @@ import '../../../styles/styles.css';
 
 class Carousel extends Component {
 
-  render() {
+  constructor(props) {
+    super(props);
+
+    this.renderCarouselItems = this.renderCarouselItems.bind(this);
+  }
+
+
+  renderCarouselItems() {
     let settings = {
       dots: false,
       infinite: true,
@@ -20,15 +27,27 @@ class Carousel extends Component {
     }
 
     return (
+      <Slider {...settings}>
+        <div><CarouselItem podcast={this.props.featuredPodcasts[0]}/></div>
+        <div><CarouselItem podcast={this.props.featuredPodcasts[1]}/></div>
+        <div><CarouselItem podcast={this.props.featuredPodcasts[2]}/></div>
+        <div><CarouselItem podcast={this.props.featuredPodcasts[3]}/></div>
+        <div><CarouselItem podcast={this.props.featuredPodcasts[4]}/></div>
+        <div><CarouselItem podcast={this.props.featuredPodcasts[5]}/></div>
+        <div><CarouselItem podcast={this.props.featuredPodcasts[6]}/></div>
+        <div><CarouselItem podcast={this.props.featuredPodcasts[7]}/></div>
+        <div><CarouselItem podcast={this.props.featuredPodcasts[8]}/></div>
+        <div><CarouselItem podcast={this.props.featuredPodcasts[9]}/></div>
+      </Slider>
+    )
+  }
+
+  render() {
+
+
+    return (
       <div className='carousel'>
-        <Slider {...settings}>
-          <div><CarouselItem/></div>
-          <div><CarouselItem/></div>
-          <div><CarouselItem/></div>
-          <div><CarouselItem/></div>
-          <div><CarouselItem/></div>
-          <div><CarouselItem/></div>
-        </Slider>
+        { this.renderCarouselItems() }
       </div>
     )
   }

@@ -19,6 +19,19 @@ class AudioPlayer extends Component {
       playbackRate: 1.0
     }
 
+    componentDidMount() {
+      this.setState({ playing: true });
+    }
+
+    // This will expand the player and reset the time if a new episode is played
+    componentWillReceiveProps() {
+      this.setState({
+        playing: true,
+        played: 0,
+        loaded: 0
+      });
+    }
+
     load = url => {
       this.setState({
         url,

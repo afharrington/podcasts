@@ -1,12 +1,14 @@
 import { combineReducers } from 'redux';
 import featuredReducer from './featuredReducer';
-import podcastReducer from './podcastReducer';
+import podcastsReducer from './podcastsReducer';
 import playerReducer from './playerReducer';
+import episodesReducer from './episodesReducer';
 
 const rootReducer = combineReducers({
   featured: featuredReducer,
-  podcast: podcastReducer,
-  player: playerReducer
+  podcasts: podcastsReducer,
+  player: playerReducer,
+  episodes: episodesReducer
 });
 
 export default rootReducer;

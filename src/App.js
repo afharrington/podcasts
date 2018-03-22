@@ -25,7 +25,7 @@ class App extends Component {
             <Route exact path='/' component={Home} />
             <Route path='/featured' component={Featured} />
             <Route path='/browse' component={Browse} />
-            <Route path='/podcast' component={Podcast} />
+            <Route path='/podcast/:showId' component={Podcast} />
           </Switch>
           <Player/>
           <Footer/>

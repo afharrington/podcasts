@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import _ from 'lodash';
-import { fetchRecentAllPodcasts, fetchAllPodcasts } from '../../actions/actions.js';
-
+import { fetchRecentPodcasts, fetchPodcast, fetchAllPodcasts } from '../../actions/actions.js';
 import Carousel from './Carousel';
 import EpisodeGrid from './EpisodeGrid';
 import Player from '../../components/Player';
@@ -15,32 +14,81 @@ class Featured extends Component {
     super(props);
 
     this.state = {
-      featuredPodcastIDs: [487, 493, 495, 507, 509, 510, 512]
+      featuredPodcastIDs: [163, 166, 171, 173, 178, 185, 187, 189, 190, 192],
+      numberEpisodes: 10
     }
+
+    this.renderMoreEpisodes = this.renderMoreEpisodes.bind(this);
   }
 
+  // Only fetch recentPodcasts is they are not already loaded to store
   componentDidMount() {
-    // this.props.fetchRecentPodcasts();
-    this.props.fetchRecentAllPodcasts();
-    this.props.fetchAllPodcasts();
-  }
-
-  render() {
-    if (this.props.allPodcasts) {
-        let allPodcastsById = _.mapKeys(this.props.allPodcasts, 'id');
-        let allPodcastsByDate = _.orderBy(this.props.allPodcasts, ['latestReleaseDate'], ['desc']);
+    if (this.props.recentPodcasts == null) {
+      this.props.fetchRecentPodcasts();
     }
 
+    this.props.fetchAllPodcasts();
 
+    // Fetch featured podcasts
+    this.state.featuredPodcastIDs.forEach((showId) => {
+      this.props.fetchPodcast(showId);
+    });
+  }
+
+  renderFeaturedPodcasts() {
+
+    let featuredPodcasts = [];
+
+    this.state.featuredPodcastIDs.forEach( id => {
+      if (this.props.podcasts[id]) {
+        featuredPodcasts.push(this.props.podcasts[id]);
+      }
+    });
+
+    if (featuredPodcasts.length == this.state.featuredPodcastIDs.length) {
+      return (
+        <Carousel featuredPodcasts={featuredPodcasts}/>
+      );
+    }
+  }
+
+  // TO DO: Give some indication if still loading recently aired
+  renderRecentEpisodes() {
+    if (this.props.recentPodcasts) {
+      let { recentPodcasts } = this.props;
+
+      let recentPodcastsSlice = recentPodcasts.slice(0, this.state.numberEpisodes);
+
+      return (
+        <div>
+          <EpisodeGrid recentPodcasts={recentPodcastsSlice}/>
+
+          { this.state.numberEpisodes < 30 &&
+            <p className='more-episodes' onClick={this.renderMoreEpisodes}>More Episodes</p>
+          }
+        </div>
+      )
+    }
+  }
+
+  renderMoreEpisodes() {
+    this.setState({ numberEpisodes: this.state.numberEpisodes += 10 });
+  }
+
+  // Loads featured podcasts immediately and featured episodes section when ready
+  // TO DO: Send correct data to Carousel
+  render() {
     return (
       <div className='featured view'>
+
         <div className='featured-podcasts'>
           <div className='section-title'><h3>Featured Podcasts</h3></div>
-          <Carousel/>
-          <div className='section-title'><h3>Recent Episodes</h3></div>
-          { this.props.recentEpisodes &&
-          <EpisodeGrid recentEpisodes={this.props.recentEpisodes}/>
-          }
+          { this.renderFeaturedPodcasts() }
+        </div>
+
+        <div className='featured-episodes'>
+          <div className='section-title'><h3>Recently Aired</h3></div>
+          { this.renderRecentEpisodes() }
         </div>
       </div>
     )
@@ -49,9 +97,9 @@ class Featured extends Component {
 
 function mapStateToProps(state) {
   return {
-    recentEpisodes: state.featured.recentEpisodes,
-    allPodcasts: state.featured.allPodcasts
+    recentPodcasts: state.featured.recentPodcasts,
+    podcasts: state.podcasts
   };
 }
 
-export default connect(mapStateToProps, { fetchAllPodcasts, fetchRecentAllPodcasts })(Featured);
+export default connect(mapStateToProps, { fetchRecentPodcasts, fetchPodcast, fetchAllPodcasts })(Featured);

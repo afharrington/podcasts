@@ -1,16 +1,18 @@
 .podcast-episode {
   color: $dark-text;
-  border: 5px solid $accent-color;
+  border-top: 5px solid $accent-color;
   background-color: $light-text;
   padding: 10px;
   text-align: left;
-  margin: 50px auto;
+  margin: 10px auto;
   width: 80%;
   display: grid;
   grid-template-areas: 'title       title       duration'
                        'date        play        play'
                        'description description description';
-  grid-template-columns: 2fr 3fr 1fr;
+  grid-template-columns: 1fr 3fr 1fr;
+  transition: height 0.2s ease;
+
 }
 
 .podcast-episode-title {
@@ -26,18 +28,48 @@
 
 .podcast-episode-date {
   grid-area: date;
+  font-size: 1.4rem;
+  line-height: 25px;
 }
 
 .podcast-episode-play {
   grid-area: play;
   display: flex;
+  justify-content: left;
+
+  p {
+    line-height: 25px;
+    font-size: 1.4rem;
+  }
+
 
   .podcast-episode-play-button {
-    padding-top: 2px;
-    font-size: 1.8rem;
-    margin-right: 5px;
-    margin-left: 5px;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+
+    path {
+      fill: $play-button-color;
+    }
   }
+
+  .podcast-episode-play-button:hover {
+    path {
+      fill: $accent-color;
+    }
+  }
+
+  .podcast-go-button {
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+    path {
+      fill: $go-button-color;
+    }
+  }
+
 
   .podcast-episode-settings-button {
     font-size: 1.2rem;
@@ -57,9 +89,10 @@
   background-color: $accent-color;
   width: 50px;
   height: 20px;
+  line-height: 20px;
   text-align: center;
   border-radius: 1000px;
-  font-size: 1.2rem;
+  font-size: 1.0rem;
   margin-top: 10px;
   font-weight: bold;
 }

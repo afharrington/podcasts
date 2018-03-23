@@ -12,9 +12,22 @@
     padding: 0;
   }
 
-  li {
+  .category-item {
     margin-bottom: 10px;
     font-size: 1.6rem;
     font-family: $body-font;
+    cursor: pointer;
   }
+
+  li.category-item.active {
+    color: $accent-color;
+  }
+
+  li:hover {
+    color: $accent-color;
+  }
+}
+
+.category-item .active {
+  color: $accent-color;
 }

@@ -577,10 +577,34 @@ input[type=range]:focus::-ms-fill-upper {
   .category-list ul {
     list-style: none;
     padding: 0; }
-  .category-list li {
+  .category-list .category-item {
     margin-bottom: 10px;
     font-size: 1.6rem;
-    font-family: "Roboto", "Open Sans", sans-serif; }
+    font-family: "Roboto", "Open Sans", sans-serif;
+    cursor: pointer; }
+  .category-list li.category-item.active {
+    color: #2cffec; }
+  .category-list li:hover {
+    color: #2cffec; }
+
+.category-item .active {
+  color: #2cffec; }
+
+.category-menu {
+  background-color: white;
+  width: 150px;
+  margin-left: 10px;
+  text-align: center;
+  position: absolute;
+  top: 30px; }
+  .category-menu p {
+    cursor: pointer;
+    color: #232323;
+    font-size: 1.4rem; }
+  .category-menu p:hover {
+    background-color: #2cffec; }
+  .category-menu .sort-active {
+    display: none; }
 
 .podcasts-container {
   height: 600px;

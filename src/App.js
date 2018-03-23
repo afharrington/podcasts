@@ -11,6 +11,7 @@ import Podcast from './views/Podcast';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Player from './components/Player';
+import ScrollToTop from './components/ScrollToTop';
 
 // Global Styles
 import './styles/styles.css';
@@ -19,7 +20,7 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        <div>
+        <ScrollToTop>
           <Header/>
           <Switch>
             <Route exact path='/' component={Home} />
@@ -29,7 +30,7 @@ class App extends Component {
           </Switch>
           <Player/>
           <Footer/>
-        </div>
+        </ScrollToTop>
       </BrowserRouter>
     );
   }

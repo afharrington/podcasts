@@ -17,6 +17,7 @@ class Podcast extends Component {
       numberEpisodes: 15
     }
 
+    this.renderPodcastInfo = this.renderPodcastInfo.bind(this);
     this.renderEpisodes = this.renderEpisodes.bind(this);
     this.renderMoreEpisodes = this.renderMoreEpisodes.bind(this);
   }
@@ -26,6 +27,32 @@ class Podcast extends Component {
     this.props.fetchPodcastEpisodes(this.state.showId);
   }
 
+  renderPodcastInfo() {
+    if (this.props.podcasts[this.state.showId]) {
+      const podcast = this.props.podcasts[this.state.showId];
+
+      return (
+        <div className='podcast-show-info'>
+          <img src={podcast.imageUrl} alt='' />
+          <h3 className='podcast-title'>{podcast.title}</h3>
+          <h5 className='podcast-authors'>{podcast.artists}</h5>
+          <div className='podcast-tags'>
+            <p>Python</p>
+            <p>Data Science</p>
+            <p>Web Development</p>
+          </div>
+          <p className='podcast-description'>"{podcast.description}"</p>
+        </div>
+      )
+    } else {
+      return (
+        <div>
+        </div>
+      )
+    }
+
+  }
+
   renderEpisodes() {
     const episodes = this.props.episodes[this.state.showId];
 
@@ -33,15 +60,16 @@ class Podcast extends Component {
       const episodes = this.props.episodes[this.state.showId];
 
       // Initially renders the first 15 episodes only
-
       let episodesSlice = episodes.slice(0, this.state.numberEpisodes);
 
       return  (
-        <div>
+        <div className='podcast-episodes'>
+          <div className='section-title'><h3>Episodes</h3></div>
            <PodcastEpisode firstEpisode={true} episode={episodes[0]} />
           { episodesSlice.map(episode => {
             return <PodcastEpisode firstEpisode={false} key={episode.id} episode={episode}/>
           })}
+          <p className='more-episodes' onClick={this.renderMoreEpisodes}>More Episodes</p>
       </div>
       )
     } else {
@@ -62,33 +90,15 @@ class Podcast extends Component {
   }
 
   render() {
-    if (this.props.podcasts[this.state.showId] && this.props.episodes) {
-      const podcast = this.props.podcasts[this.state.showId];
 
       return (
         <div className='podcast view'>
-          <img src={podcast.imageUrl} alt='' />
-          <h3 className='podcast-title'>{podcast.title}</h3>
-          <h5 className='podcast-authors'>{podcast.artists}</h5>
-          <p className='podcast-description'>"{podcast.description}"</p>
-
-          <div className='section-title'><h3>Episodes</h3></div>
-          <div className='podcast-episodes'>
-            { this.props.episodes && this.renderEpisodes() }
-
-            { this.props.episodes[this.state.showId] &&
-              <p className='more-episodes' onClick={this.renderMoreEpisodes}>More Episodes</p>
-            }
-
-          </div>
+          { this.renderPodcastInfo()}
+          { this.renderEpisodes() }
         </div>
       )
-    } else {
-      return (
-        <div></div>
-      )
     }
-  }
+
 }
 
 function mapStateToProps(state) {

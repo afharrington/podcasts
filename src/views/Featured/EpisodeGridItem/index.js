@@ -34,6 +34,17 @@ class EpisodeGridItem extends Component {
     )
   }
 
+  renderPodcastTitle() {
+    let podcastTitle = this.props.podcastTitle;
+    if (podcastTitle.length > 35) {
+      podcastTitle = podcastTitle.substring(0, 35) + '...';
+    }
+
+    return (
+      <p>{podcastTitle}</p>
+    )
+  }
+
   playEpisode() {
     this.props.playEpisode(this.state.episode);
   }
@@ -45,7 +56,9 @@ class EpisodeGridItem extends Component {
         <NavLink to={`/podcast/${this.state.episode.podcastId}`}><img src={this.props.imageUrl} alt=''/></NavLink>
         {this.renderTitle()}
         <p className='episode-date'>Aired: <Moment format="MM/DD/YYYY" date={this.state.episode.publishedDate}/></p>
-        <NavLink className='podcast-title' to={`/podcast/${this.state.episode.podcastId}`}><p >{this.props.podcastTitle}</p></NavLink>
+        <NavLink className='podcast-title' to={`/podcast/${this.state.episode.podcastId}`}>
+          {this.renderPodcastTitle()}
+        </NavLink>
         <div className='episode-play'>
           <FaPlayCircle className='play-button' onClick={this.playEpisode}/>
           <a className='go-button' href={this.state.episode.sourceUrl} target='_blank' rel='noreferrer no follow'><MdLaunch/></a>

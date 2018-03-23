@@ -12,6 +12,27 @@
     margin-bottom: 20px;
   }
 
+  .podcast-tags {
+    cursor: pointer;
+    margin-bottom: 25px;
+    p {
+      display: inline-block;
+      background-color: $accent-color;
+      color: $dark-text;
+      font-weight: bold;
+      margin-left: 5px;
+      margin-right: 5px;
+      padding-left: 10px;
+      padding-right: 10px;
+      border-radius: 25px;
+      transition: all 0.2s ease-in;
+    }
+
+    p:hover {
+      background-color: white;
+    }
+  }
+
   .podcast-description {
     width: 80%;
     margin: 0 auto;

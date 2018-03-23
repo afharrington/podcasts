@@ -38,16 +38,13 @@ class Header extends Component {
         <div className='hamburger-button' onClick={this.toggleHamburger}>
           <FaBars/>
         </div>
-
-          <div id='hamburger-menu' className={this.state.hamburgerOpen ? 'show' : 'hide' } key='hey'>
-            <div className='menu-close-button' onClick={this.toggleHamburger}><MdClose/></div>
-            <NavLink to='/featured' activeClassName='active'>Featured</NavLink>
-            <NavLink to='/browse' activeClassName='active'>Browse</NavLink>
-            <NavLink to='/about' activeClassName='active'>About</NavLink>
-            <li className="search"><input></input></li>
-          </div>
-
-
+        <div id='hamburger-menu' className={this.state.hamburgerOpen ? 'show' : 'hide' } key='hey'>
+          <div className='menu-close-button' onClick={this.toggleHamburger}><MdClose/></div>
+          <NavLink to='/featured' activeClassName='active'>Featured</NavLink>
+          <NavLink to='/browse' activeClassName='active'>Browse</NavLink>
+          <NavLink to='/about' activeClassName='active'>About</NavLink>
+          <li className="search"><input></input></li>
+        </div>
       </div>
     )
   }

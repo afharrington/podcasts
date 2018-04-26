@@ -7,6 +7,7 @@ export const FETCH_ALL_PODCASTS = 'fetch_all_podcasts';
 export const FETCH_RECENT_PODCASTS = 'fetch_recent_podcasts';
 export const FETCH_RECENT_N_PODCASTS = 'fetch_recent_n_podcasts';
 export const FETCH_PODCAST_EPISODES = 'fetch_podcast_episodes';
+export const FETCH_CATEGORY = 'fetch_category';
 export const PLAY_EPISODE = 'play_episode';
 
 
@@ -90,6 +91,18 @@ export function fetchPodcastEpisodes(showId) {
   }
 }
 
+// Fetches all podcasts for a specific category
+export function fetchCategory(categoryId) {
+  return function(dispatch) {
+    axios.get(`${ROOT}/api/category/id/search/${categoryId}/2`)
+      .then(response => {
+        dispatch({ type: FETCH_CATEGORY, payload: response.data });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+}
 
 // Sets the current episode in the built-in player
 export function playEpisode(episode) {

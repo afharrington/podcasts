@@ -2,6 +2,13 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  width: 70%;
+  margin-left: 30%;
+
+  @media (max-width: 600px) {
+    width: 100%;
+    margin-left: 0%;
+  }
 }
 
 .podcast-grid-item {
@@ -9,8 +16,8 @@
   text-align: center;
 
   img {
-    width: 125px;
-    height: 125px;
+    width: 150px;
+    height: 150px;
   }
 
  .podcast-grid-item-authors, .podcast-grid-item-episode, .podcast-grid-item-date  {
@@ -20,6 +27,8 @@
 
   .podcast-grid-item-title {
     margin-top: 10px;
+    max-width: 150px;
+    font-size: 1.4rem;
   }
 
   .podcast-grid-item-episode {

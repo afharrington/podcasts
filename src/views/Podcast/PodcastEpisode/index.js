@@ -40,7 +40,6 @@ class PodcastEpisode extends Component {
 
   render () {
     const episode = this.state.episode;
-    console.log(episode.audioDuration);
 
     return (
       <div className='podcast-episode'>
@@ -59,6 +58,7 @@ class PodcastEpisode extends Component {
     )
   }
 }
+
 
 
 

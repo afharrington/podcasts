@@ -15,7 +15,7 @@ class CategoryItem extends Component {
 
     return (
       <li className={categoryClassName} key={category.categoryId} onClick={this.handleSelectCategoryWithValue}>
-        {category.categoryName} [{category.categoryCount}]
+        {category.categoryName}
       </li>
     )
   }

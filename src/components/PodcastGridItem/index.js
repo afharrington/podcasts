@@ -10,12 +10,13 @@ class PodcastGridItem extends Component {
 
     return (
       <div className='podcast-grid-item'>
-        <img src={podcast.podcastImageUrl} alt='' />
-        <p className='podcast-grid-item-title'>{podcast.podcastTitle}</p>
+        <img src={podcast.imageUrl} alt='' />
+        <p className='podcast-grid-item-title'>{podcast.title}</p>
+        {/*
         <p className='podcast-grid-item-episode'>{podcast.podcastEpisodeTitle}</p>
         <p className='podcast-grid-item-date'>
           <Moment fromNow date={podcast.podcastEpisodeDate}/>
-        </p>
+        </p> */}
       </div>
     )
   }

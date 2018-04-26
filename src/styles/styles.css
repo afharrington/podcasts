@@ -628,19 +628,27 @@ input[type=range]:focus::-ms-fill-upper {
 .podcast-grid {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center; }
+  justify-content: center;
+  width: 70%;
+  margin-left: 30%; }
+  @media (max-width: 600px) {
+    .podcast-grid {
+      width: 100%;
+      margin-left: 0%; } }
 
 .podcast-grid-item {
   margin: 20px;
   text-align: center; }
   .podcast-grid-item img {
-    width: 125px;
-    height: 125px; }
+    width: 150px;
+    height: 150px; }
   .podcast-grid-item .podcast-grid-item-authors, .podcast-grid-item .podcast-grid-item-episode, .podcast-grid-item .podcast-grid-item-date {
     font-family: "Roboto Condensed", "Open Sans Condensed", sans-serif;
     font-size: 1.4rem; }
   .podcast-grid-item .podcast-grid-item-title {
-    margin-top: 10px; }
+    margin-top: 10px;
+    max-width: 150px;
+    font-size: 1.4rem; }
   .podcast-grid-item .podcast-grid-item-episode {
     margin-top: 5px; }
 

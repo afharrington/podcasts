@@ -12,7 +12,7 @@ class Browse extends Component {
     super(props);
 
     this.state = {
-      selectedCategory: '2'
+      selectedCategory: 0
     }
 
     this.handleSelectCategory = this.handleSelectCategory.bind(this);
@@ -20,14 +20,14 @@ class Browse extends Component {
 
   // Fetch all podcasts (since default category view is "All")
   componentDidMount() {
-    // this.props.fetchAllPodcasts();
-    this.props.fetchCategory(this.state.selectedCategory);
+    this.props.fetchAllPodcasts();
+
+    // this.props.fetchCategory(this.state.selectedCategory);
   }
 
   handleSelectCategory(categoryId) {
     this.setState({ selectedCategory: categoryId });
     this.props.fetchCategory(categoryId);
-    console.log(categoryId);
   }
 
   // Passes ability to select a category down to category list

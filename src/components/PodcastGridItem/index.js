@@ -7,10 +7,9 @@ class PodcastGridItem extends Component {
 
   render () {
     const podcast = this.props.podcast;
-    console.log(podcast);
 
     return (
-        <div className='podcast-grid-item'>
+        <div className='podcast-grid-item' key={podcast.id}>
           <a href={`/podcast/${podcast.id}`}>
             <img src={podcast.imageUrl} alt='' />
           </a>

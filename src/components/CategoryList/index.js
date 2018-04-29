@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import _ from 'lodash';
 import { categories } from '../../data/categories.js';
 import FaCaretDown from 'react-icons/lib/fa/caret-down';
 import CategoryItem from './CategoryItem';
@@ -17,27 +18,41 @@ class CategoryList extends Component {
       sortedBy: 'Popularity'
     }
 
-    this.showCategoryMenu = this.showCategoryMenu.bind(this);
-    this.selectAll = this.selectAll.bind(this);
+    this.showCategorySortMenu = this.showCategorySortMenu.bind(this);
+    this.handleSortOrderChange = this.handleSortOrderChange.bind(this);
+    this.handleSelectAll = this.handleSelectAll.bind(this);
   }
 
-  showCategoryMenu() {
+  // Toggles the sort menu pop-up
+  showCategorySortMenu() {
     this.setState({ menuOpen: !this.state.menuOpen });
+  }
+
+  handleSortOrderChange(sortOption) {
+    this.setState({ sortedBy: sortOption });
+  }
+
+  handleSelectAll() {
+    this.props.handleSelectCategory(0);
   }
 
   // Passes ability to select a category down to individual category items
   renderCategories() {
+    let categories;
+    if (this.state.sortedBy === 'A-Z') {
+      categories = _.orderBy(this.state.categories, 'categoryName', 'asc');
+    } else if (this.state.sortedBy === 'Z-A') {
+      categories = _.orderBy(this.state.categories, 'categoryName', 'desc');
+    } else {
+      categories = this.state.categories;
+    }
 
-    return this.state.categories.map(category => {
 
+    return categories.map(category => {
       return (
         <CategoryItem key={category.categoryId} category={category} handleSelectCategory={this.props.handleSelectCategory} selectedCategory={this.props.selectedCategory} />
       )
     })
-  }
-
-  selectAll() {
-    this.props.handleSelectCategory('000');
   }
 
   render() {
@@ -45,10 +60,10 @@ class CategoryList extends Component {
 
     return (
       <div className='category-list'>
-        <p className='list-sort'><span className='label'>Sort by:</span> {this.state.sortedBy} <span className='icon'><FaCaretDown onClick={this.showCategoryMenu}/></span></p>
-        { this.state.menuOpen && <CategoryMenu sortedBy={this.state.sortedBy} onClickOutside={this.showCategoryMenu} /> }
+        <p className='list-sort'><span className='label'>Sort by:</span> {this.state.sortedBy} <span className='icon'><FaCaretDown onClick={this.showCategorySortMenu}/></span></p>
+        { this.state.menuOpen && <CategoryMenu handleSortOrderChange={this.handleSortOrderChange} sortedBy={this.state.sortedBy} onClickOutside={this.showCategorySortMenu} /> }
         <ul>
-          <li className={categoryClassName} onClick={this.selectAll}>
+          <li className={categoryClassName} onClick={this.handleSelectAll}>
             All
           </li>
           {this.renderCategories()}

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import _ from 'lodash';
 import ListSettings from '../ListSettings';
 import PodcastGridItem from '../PodcastGridItem';
 import PodcastListItem from '../PodcastListItem';
@@ -11,57 +12,46 @@ class PodcastsContainer extends Component {
     super(props);
     this.state = {
       view: 'grid',
-      podcasts: [{
-        podcastId: 507,
-        podcastTitle: 'Front End Happy Hour',
-        podcastImageUrl: 'http://is5.mzstatic.com/image/thumb/Music118/v4/1b/93/01/1b9301c5-e128-d3fd-9e37-d2dff166b831/source/600x600bb.jpg',
-        podcastAuthors: 'Front End Happy Hour',
-        podcastEpisodeTitle: 'Most recent episode of this podcast',
-        podcastEpisodeDate: '2018-01-23T16:07:00'
-      },{
-        podcastId: 507,
-        podcastTitle: 'Front End Happy Hour',
-        podcastImageUrl: 'http://is5.mzstatic.com/image/thumb/Music118/v4/1b/93/01/1b9301c5-e128-d3fd-9e37-d2dff166b831/source/600x600bb.jpg',
-        podcastAuthors: 'Front End Happy Hour',
-        podcastEpisodeTitle: 'Most recent episode of this podcast',
-        podcastEpisodeDate: '2018-01-23T16:07:00'
-      },{
-        podcastId: 507,
-        podcastTitle: 'Front End Happy Hour',
-        podcastImageUrl: 'http://is5.mzstatic.com/image/thumb/Music118/v4/1b/93/01/1b9301c5-e128-d3fd-9e37-d2dff166b831/source/600x600bb.jpg',
-        podcastAuthors: 'Front End Happy Hour',
-        podcastEpisodeTitle: 'Most recent episode of this podcast',
-        podcastEpisodeDate: '2018-01-23T16:07:00'
-      }]
+      category: this.props.selectedCategory
     }
   }
 
-  componentDidMount() {
-    console.log(this.props.categories);
-    console.log(this.props.selectedCategory);
-  }
 
   renderListView() {
+    let podcasts;
+    if (this.state.category === 0) {
+      podcasts = _.sortBy(this.props.podcasts, 'title');
+    } else {
+      podcasts = _.sortBy(this.props.categories[this.state.category], 'title');
+    }
+
     return (
       <div className='podcast-list'>
-       { this.props.categories[this.props.selectedCategory].map(podcast => (
-         <PodcastListItem podcast={podcast}/>
+       { _.map(podcasts, podcast => (
+         <PodcastListItem podcast={podcast} key={podcast.id}/>
       ))}
       </div>);
   }
 
   renderGridView() {
+    let podcasts;
+    if (this.state.category === 0) {
+      podcasts = _.sortBy(this.props.podcasts, 'title');
+    } else {
+      podcasts = _.sortBy(this.props.categories[this.state.category], 'title');
+    }
+
     return (
       <div className='podcast-grid'>
-       { this.props.categories[this.props.selectedCategory].map(podcast => (
-         <PodcastGridItem podcast={podcast}/>
+       { _.map(podcasts, podcast => (
+        <PodcastGridItem podcast={podcast} key={podcast.id}/>
       ))}
       </div>);
   }
 
   render () {
-    // If categories are loaded to state, render the podcasts
-    if (this.props.categories[this.props.selectedCategory]) {
+    // Render podcasts if "All" is currently selected or the selected category is loaded to state
+    if (this.props.selectedCategory === 0 || this.props.categories[this.props.selectedCategory]) {
       return (
         <div className='podcasts-container'>
           <ListSettings/>
@@ -77,6 +67,7 @@ class PodcastsContainer extends Component {
 
 function mapStateToProps(state) {
   return {
+    podcasts: state.podcasts,
     categories: state.categories
   };
 }

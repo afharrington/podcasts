@@ -12,7 +12,7 @@ class ListSettings extends Component {
     return (
       <div className='list-settings'>
         <p className='list-sort'>
-          <span className='label'>Sort by:</span> Most Recent <FaCaretDown className='icon'/></p>
+          <span className='label'>Sort by:</span> A-Z <FaCaretDown className='icon'/></p>
         <p className='list-toggle-view'>
           <FaList className='icon'/> List View</p>
       </div>

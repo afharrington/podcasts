@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import _ from 'lodash';
-import { fetchAllPodcasts } from '../../actions/actions.js';
+import { fetchAllPodcasts, setCategory } from '../../actions/actions.js';
 import '../../styles/styles.css';
 
 class Home extends Component {
@@ -27,4 +27,4 @@ class Home extends Component {
 }
 
 
-export default connect(null, { fetchAllPodcasts })(Home);
+export default connect(null, { fetchAllPodcasts, setCategory })(Home);

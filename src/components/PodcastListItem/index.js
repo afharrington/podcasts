@@ -10,12 +10,16 @@ class PodcastListItem extends Component {
 
     return (
       <div className='podcast-list-item'>
-        <p className='podcast-list-item-title'>{podcast.title}</p>
+        <a href={`/podcast/${podcast.id}`}>
+          <p className='podcast-list-item-title'>{podcast.title}</p>
+        </a>
+        <Moment className='podcast-list-item-date' fromNow date={podcast.latestReleaseDate}/>
+
       { /*
         <p className='podcast-list-item-episode'>{podcast.podcastEpisodeTitle}</p>
         <Moment className='podcast-list-item-date' fromNow date={podcast.podcastEpisodeDate}/>
       */ }
-      </div>
+      </div>  
     )
   }
 }

@@ -14,7 +14,7 @@ class ListSettings extends Component {
         <p className='list-sort'>
           <span className='label'>Sort by:</span> A-Z <FaCaretDown className='icon'/></p>
         <p className='list-toggle-view'>
-          <FaList className='icon'/> List View</p>
+          <FaList className='icon' onClick={this.props.handleViewChange}/> Show {this.props.currentView === 'Grid' ? 'List' : 'Grid' } View</p>
       </div>
     )
   }

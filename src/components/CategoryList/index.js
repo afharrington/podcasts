@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import _ from 'lodash';
+import { setCategory } from '../../actions/actions.js';
 import { categories } from '../../data/categories.js';
 import FaCaretDown from 'react-icons/lib/fa/caret-down';
 import CategoryItem from './CategoryItem';
@@ -33,7 +35,7 @@ class CategoryList extends Component {
   }
 
   handleSelectAll() {
-    this.props.handleSelectCategory(0);
+    this.props.setCategory(0);
   }
 
   // Passes ability to select a category down to individual category items
@@ -47,7 +49,6 @@ class CategoryList extends Component {
       categories = this.state.categories;
     }
 
-
     return categories.map(category => {
       return (
         <CategoryItem key={category.categoryId} category={category} handleSelectCategory={this.props.handleSelectCategory} selectedCategory={this.props.selectedCategory} />
@@ -56,12 +57,14 @@ class CategoryList extends Component {
   }
 
   render() {
-    let categoryClassName = this.props.selectedCategory == '000' ? 'category-item active' : 'category-item';
+    let categoryClassName = this.props.currentCategory === 0 ? 'category-item active' : 'category-item';
 
     return (
       <div className='category-list'>
         <p className='list-sort'><span className='label'>Sort by:</span> {this.state.sortedBy} <span className='icon'><FaCaretDown onClick={this.showCategorySortMenu}/></span></p>
+
         { this.state.menuOpen && <CategoryMenu handleSortOrderChange={this.handleSortOrderChange} sortedBy={this.state.sortedBy} onClickOutside={this.showCategorySortMenu} /> }
+
         <ul>
           <li className={categoryClassName} onClick={this.handleSelectAll}>
             All
@@ -73,4 +76,10 @@ class CategoryList extends Component {
   }
 }
 
-export default CategoryList;
+function mapStateToProps(state) {
+  return {
+    currentCategory: state.currentCategory
+  };
+}
+
+export default connect(mapStateToProps, { setCategory })(CategoryList);

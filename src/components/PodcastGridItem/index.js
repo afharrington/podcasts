@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Moment from 'react-moment';
+import { NavLink } from 'react-router-dom';
 
 import '../../styles/styles.css';
 
@@ -10,9 +11,11 @@ class PodcastGridItem extends Component {
 
     return (
         <div className='podcast-grid-item' key={podcast.id}>
-          <a href={`/podcast/${podcast.id}`}>
+
+          <NavLink to={`/podcast/${podcast.id}`}>
             <img src={podcast.imageUrl} alt='' />
-          </a>
+          </NavLink>
+
           <p className='podcast-grid-item-title'>{podcast.title}</p>
           {/*
           <p className='podcast-grid-item-episode'>{podcast.podcastEpisodeTitle}</p>

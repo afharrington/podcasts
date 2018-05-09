@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { fetchCategory } from '../../actions/actions.js';
 import _ from 'lodash';
 import ListSettings from '../ListSettings';
 import PodcastGridItem from '../PodcastGridItem';
@@ -11,18 +12,34 @@ class PodcastsContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      view: 'grid',
-      category: this.props.selectedCategory
+      view: 'Grid',
+      category: this.props.currentCategory || 0
+    }
+
+    this.handleViewChange = this.handleViewChange.bind(this);
+  }
+
+  componentDidMount() {
+    // if (this.state.category !== 0 && !(this.props.categories[this.state.category])) {
+    //   this.props.fetchCategory(this.state.selectedCategory);
+    // }
+  }
+
+  handleViewChange() {
+    if (this.state.view === 'Grid') {
+      this.setState({ view: 'List'})
+    } else {
+      this.setState({ view: 'Grid'})
     }
   }
 
 
   renderListView() {
     let podcasts;
-    if (this.state.category === 0) {
+    if (this.props.currentCategory === 0) {
       podcasts = _.sortBy(this.props.podcasts, 'title');
     } else {
-      podcasts = _.sortBy(this.props.categories[this.state.category], 'title');
+      podcasts = _.sortBy(this.props.categories[this.props.currentCategory], 'title');
     }
 
     return (
@@ -35,10 +52,11 @@ class PodcastsContainer extends Component {
 
   renderGridView() {
     let podcasts;
-    if (this.state.category === 0) {
+
+    if (this.props.currentCategory === 0) {
       podcasts = _.sortBy(this.props.podcasts, 'title');
     } else {
-      podcasts = _.sortBy(this.props.categories[this.state.category], 'title');
+      podcasts = _.sortBy(this.props.categories[this.props.currentCategory], 'title');
     }
 
     return (
@@ -50,16 +68,25 @@ class PodcastsContainer extends Component {
   }
 
   render () {
-    // Render podcasts if "All" is currently selected or the selected category is loaded to state
-    if (this.props.selectedCategory === 0 || this.props.categories[this.props.selectedCategory]) {
+    // Render podcasts if the selectory category's podcasts are loaded to state
+    // of if "All" is selected (category 0)
+    if (this.props.currentCategory === 0 || this.props.categories[this.props.currentCategory]) {
       return (
         <div className='podcasts-container'>
-          <ListSettings/>
-          { this.state.view === 'grid' ? this.renderGridView() : this.renderListView() }
+          <ListSettings currentView={this.state.view} handleViewChange={this.handleViewChange}/>
+          { this.state.view === 'Grid' ? this.renderGridView() : this.renderListView() }
         </div>
       )
     } else {
-      return <div></div>
+      return (
+        <div className="spinner">
+          <div className="rect1"></div>
+          <div className="rect2"></div>
+          <div className="rect3"></div>
+          <div className="rect4"></div>
+          <div className="rect5"></div>
+        </div>
+      )
     }
   }
 }
@@ -68,8 +95,9 @@ class PodcastsContainer extends Component {
 function mapStateToProps(state) {
   return {
     podcasts: state.podcasts,
-    categories: state.categories
+    categories: state.categories,
+    currentCategory: state.currentCategory
   };
 }
 
-export default connect(mapStateToProps)(PodcastsContainer);
+export default connect(mapStateToProps, { fetchCategory })(PodcastsContainer);

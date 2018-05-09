@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import _ from 'lodash';
 import PodcastEpisode from './PodcastEpisode';
+import { categories } from '../../data/categories.js';
 import { connect } from 'react-redux';
-import { fetchPodcastEpisodes, fetchPodcast } from '../../actions/actions.js';
+import { fetchPodcastEpisodes, fetchPodcast, setCategory } from '../../actions/actions.js';
 
 import '../../styles/styles.css';
 
@@ -23,8 +25,39 @@ class Podcast extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchPodcast(this.state.showId);
-    this.props.fetchPodcastEpisodes(this.state.showId);
+    console.log(this.props.podcasts);
+    // this.props.fetchPodcast(this.state.showId);
+    // this.props.fetchPodcastEpisodes(this.state.showId);
+  }
+
+  handleSetCategory() {
+
+  }
+
+  renderPodcastTags() {
+    // Match categoryIds from data file with podcast categories
+    let categoriesById =  _.mapKeys(categories, 'categoryId');
+    let podcastCategoriesById = [];
+
+    // If the podcast info is in state, use the tags belonging to it - else
+    // set categories to an empty string
+    let podcastCategories = this.props.podcasts[this.state.showId] ? this.props.podcasts[this.state.showId].podcastCategories : '';
+
+
+    podcastCategories.forEach(category => {
+      podcastCategoriesById.push(categoriesById[category.categoryId].categoryName);
+    });
+
+
+    return (
+      <div className='podcast-tags'>
+        {
+          podcastCategories.map(category => {
+            return <a href="/browse" category={category} onClick={this.props.handleSetCategory}><p key={category.categoryId}>{category.categoryName}</p></a>
+          })
+        }
+      </div>
+    );
   }
 
   renderPodcastInfo() {
@@ -36,11 +69,7 @@ class Podcast extends Component {
           <img src={podcast.imageUrl} alt='' />
           <h3 className='podcast-title'>{podcast.title}</h3>
           <h5 className='podcast-authors'>{podcast.artists}</h5>
-          <div className='podcast-tags'>
-            <p>Python</p>
-            <p>Data Science</p>
-            <p>Web Development</p>
-          </div>
+          { this.renderPodcastTags() }
           <p className='podcast-description'>"{podcast.description}"</p>
         </div>
       )
@@ -54,10 +83,14 @@ class Podcast extends Component {
   }
 
   renderEpisodes() {
-    const episodes = this.props.episodes[this.state.showId];
+    // const episodes = this.props.episodes[this.state.showId];
+    // const episodes = this.props.podcasts[this.state.showId].episodes;
+    let episodes;
+    if (this.props.podcasts[this.state.showId]) {
+      episodes = this.props.podcasts[this.state.showId].episodes;
+    }
 
     if (episodes) {
-      const episodes = this.props.episodes[this.state.showId];
 
       // Initially renders the first 15 episodes only
       let episodesSlice = episodes.slice(0, this.state.numberEpisodes);
@@ -103,9 +136,10 @@ class Podcast extends Component {
 
 function mapStateToProps(state) {
   return {
-    episodes: state.episodes,
+    // episodes: state.episodes,
+    currentCategory: state.currentCategory,
     podcasts: state.podcasts
   };
 }
 
-export default connect(mapStateToProps, { fetchPodcastEpisodes, fetchPodcast })(Podcast);
+export default connect(mapStateToProps, { fetchPodcastEpisodes, fetchPodcast, setCategory })(Podcast);

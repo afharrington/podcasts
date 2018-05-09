@@ -9,6 +9,7 @@ export const FETCH_RECENT_N_PODCASTS = 'fetch_recent_n_podcasts';
 export const FETCH_PODCAST_EPISODES = 'fetch_podcast_episodes';
 export const FETCH_CATEGORY = 'fetch_category';
 export const PLAY_EPISODE = 'play_episode';
+export const SET_CATEGORY = 'set_category';
 
 
 // const ROOT = uri.rootUri;
@@ -109,5 +110,14 @@ export function playEpisode(episode) {
   return {
     type: PLAY_EPISODE,
     payload: episode
+  }
+}
+
+
+// Sets the current category visible on Browse page
+export function setCategory(categoryId) {
+  return {
+    type: SET_CATEGORY,
+    payload: categoryId
   }
 }

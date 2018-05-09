@@ -21,5 +21,5 @@ export const categories = [
   { categoryName: 'Startups & Entrepreneurship', categoryId: 20 },
   { categoryName: 'Digital Marketing & Strategy', categoryId: 21 },
   { categoryName: 'Functional Programming', categoryId: 22 },
-  { categoryName: 'Embedded & Io', categoryId: 23 }
+  { categoryName: 'Embedded & IoT', categoryId: 23 }
 ];

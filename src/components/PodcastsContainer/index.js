@@ -17,13 +17,15 @@ class PodcastsContainer extends Component {
     }
 
     this.handleViewChange = this.handleViewChange.bind(this);
+
   }
 
   componentDidMount() {
-    // if (this.state.category !== 0 && !(this.props.categories[this.state.category])) {
-    //   this.props.fetchCategory(this.state.selectedCategory);
-    // }
+    if (this.state.category !== 0 && !(this.props.categories[this.state.category])) {
+      this.props.fetchCategory(this.state.selectedCategory);
+    }
   }
+
 
   handleViewChange() {
     if (this.state.view === 'Grid') {
@@ -54,9 +56,17 @@ class PodcastsContainer extends Component {
     let podcasts;
 
     if (this.props.currentCategory === 0) {
-      podcasts = _.sortBy(this.props.podcasts, 'title');
+      if (this.props.sortedBy == 'A-Z') {
+        podcasts = _.sortBy(this.props.podcasts, 'title');
+      } else {
+        podcasts = _.sortBy(this.props.podcasts, 'title').reverse();
+      }
     } else {
-      podcasts = _.sortBy(this.props.categories[this.props.currentCategory], 'title');
+      if (this.props.sortedBy == 'A-Z') {
+        podcasts = _.sortBy(this.props.categories[this.props.currentCategory], 'title');
+      } else {
+        podcasts = _.sortBy(this.props.categories[this.props.currentCategory], 'title').reverse();
+      }
     }
 
     return (
@@ -73,7 +83,12 @@ class PodcastsContainer extends Component {
     if (this.props.currentCategory === 0 || this.props.categories[this.props.currentCategory]) {
       return (
         <div className='podcasts-container'>
-          <ListSettings currentView={this.state.view} handleViewChange={this.handleViewChange}/>
+
+          <ListSettings
+            currentView={this.state.view}
+            sortedBy={this.props.sortedBy}
+            handleViewChange={this.handleViewChange}
+            handleSortOrderChange={this.props.handleSortOrderChange} />
           { this.state.view === 'Grid' ? this.renderGridView() : this.renderListView() }
         </div>
       )

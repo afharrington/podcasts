@@ -3,7 +3,7 @@ import onClickOutside from 'react-onclickoutside'
 
 import '../../../styles/styles.css';
 
-class CategoryMenu extends Component {
+class CategoryMenuPopup extends Component {
 
   constructor(props) {
     super(props);
@@ -44,4 +44,4 @@ class CategoryMenu extends Component {
   }
 }
 
-export default onClickOutside(CategoryMenu);
+export default onClickOutside(CategoryMenuPopup);

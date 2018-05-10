@@ -5,7 +5,7 @@ import { setCategory } from '../../actions/actions.js';
 import { categories } from '../../data/categories.js';
 import FaCaretDown from 'react-icons/lib/fa/caret-down';
 import CategoryItem from './CategoryItem';
-import CategoryMenu from './CategoryMenu';
+import CategoryMenuPopup from './CategoryMenuPopup';
 
 import '../../styles/styles.css';
 
@@ -32,6 +32,7 @@ class CategoryList extends Component {
 
   handleSortOrderChange(sortOption) {
     this.setState({ sortedBy: sortOption });
+    this.showCategorySortMenu();
   }
 
   handleSelectAll() {
@@ -63,7 +64,7 @@ class CategoryList extends Component {
       <div className='category-list'>
         <p className='list-sort'><span className='label'>Sort by:</span> {this.state.sortedBy} <span className='icon'><FaCaretDown onClick={this.showCategorySortMenu}/></span></p>
 
-        { this.state.menuOpen && <CategoryMenu handleSortOrderChange={this.handleSortOrderChange} sortedBy={this.state.sortedBy} onClickOutside={this.showCategorySortMenu} /> }
+        { this.state.menuOpen && <CategoryMenuPopup handleSortOrderChange={this.handleSortOrderChange} sortedBy={this.state.sortedBy} onClickOutside={this.showCategorySortMenu} /> }
 
         <ul>
           <li className={categoryClassName} onClick={this.handleSelectAll}>

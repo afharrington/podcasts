@@ -12,17 +12,17 @@ class Browse extends Component {
     super(props);
 
     this.state = {
-      selectedCategory: 0
+      selectedCategory: 0,
+      sortedBy: 'A-Z'
     }
 
     this.handleSelectCategory = this.handleSelectCategory.bind(this);
+    this.handleSortOrderChange = this.handleSortOrderChange.bind(this);
   }
 
   // Fetch all podcasts (since default category view is "All")
   componentDidMount() {
     this.props.fetchAllPodcasts();
-
-    // this.props.fetchCategory(this.state.selectedCategory);
   }
 
   handleSelectCategory(categoryId) {
@@ -30,14 +30,23 @@ class Browse extends Component {
     this.props.fetchCategory(categoryId);
   }
 
+  handleSortOrderChange(sortOrder) {
+    this.setState({ sortedBy: sortOrder });
+    console.log(sortOrder);
+  }
+
   // Passes ability to select a category down to category list
   render() {
     return (
       <div className='browse view'>
         <div className='section-title'><h3>Browse podcasts by topic</h3></div>
-        <CategoryList handleSelectCategory={this.handleSelectCategory} selectedCategory={this.state.selectedCategory}/>
-
-        <PodcastsContainer selectedCategory={this.state.selectedCategory} />
+        <CategoryList
+          handleSelectCategory={this.handleSelectCategory}
+          selectedCategory={this.state.selectedCategory}/>
+        <PodcastsContainer
+          selectedCategory={this.state.selectedCategory}
+          handleSortOrderChange={this.handleSortOrderChange}
+          sortedBy={this.state.sortedBy} />
       </div>
     )
   }

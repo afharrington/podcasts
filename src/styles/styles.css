@@ -758,6 +758,23 @@ input[type=range]:focus::-ms-fill-upper {
   margin-top: 10px;
   font-weight: bold; }
 
+.sort-menu-popup {
+  background-color: white;
+  width: 150px;
+  margin-left: 10px;
+  text-align: center;
+  position: absolute;
+  top: 250px;
+  right: 200px; }
+  .sort-menu-popup p {
+    cursor: pointer;
+    color: #232323;
+    font-size: 1.4rem; }
+  .sort-menu-popup p:hover {
+    background-color: #2cffec; }
+  .sort-menu-popup .sort-active {
+    display: none; }
+
 .home {
   margin-top: 50px;
   height: 100vh;

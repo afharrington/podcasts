@@ -25,9 +25,8 @@ class Podcast extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props.podcasts);
-    // this.props.fetchPodcast(this.state.showId);
-    // this.props.fetchPodcastEpisodes(this.state.showId);
+    this.props.fetchPodcast(this.state.showId);
+    this.props.fetchPodcastEpisodes(this.state.showId);
   }
 
   handleSetCategory() {
@@ -97,12 +96,14 @@ class Podcast extends Component {
 
       return  (
         <div className='podcast-episodes'>
+
           <div className='section-title'><h3>Episodes</h3></div>
            <PodcastEpisode firstEpisode={true} episode={episodes[0]} />
           { episodesSlice.map(episode => {
             return <PodcastEpisode firstEpisode={false} key={episode.id} episode={episode}/>
           })}
           <p className='more-episodes' onClick={this.renderMoreEpisodes}>More Episodes</p>
+
       </div>
       )
     } else {

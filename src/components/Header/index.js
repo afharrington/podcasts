@@ -31,7 +31,7 @@ class Header extends Component {
             <NavLink to='/featured' activeClassName='active'>Featured</NavLink>
             <NavLink to='/browse' activeClassName='active'>Browse</NavLink>
             <NavLink to='/about' activeClassName='active'>About</NavLink>
-            <li className="search"><input></input></li>
+            { /* <li className="search"><input></input></li> */ }
           </ul>
         </nav>
 
@@ -43,7 +43,7 @@ class Header extends Component {
           <NavLink to='/featured' activeClassName='active'>Featured</NavLink>
           <NavLink to='/browse' activeClassName='active'>Browse</NavLink>
           <NavLink to='/about' activeClassName='active'>About</NavLink>
-          <li className="search"><input></input></li>
+          { /* <li className="search"><input></input></li> */ }
         </div>
       </div>
     )

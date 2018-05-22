@@ -26,7 +26,7 @@ class Podcast extends Component {
 
   componentDidMount() {
     this.props.fetchPodcast(this.state.showId);
-    this.props.fetchPodcastEpisodes(this.state.showId);
+    // this.props.fetchPodcastEpisodes(this.state.showId);
   }
 
   handleSetCategory() {
@@ -68,7 +68,7 @@ class Podcast extends Component {
           <img src={podcast.imageUrl} alt='' />
           <h3 className='podcast-title'>{podcast.title}</h3>
           <h5 className='podcast-authors'>{podcast.artists}</h5>
-          { this.renderPodcastTags() }
+          { /* this.renderPodcastTags() */ }
           <p className='podcast-description'>"{podcast.description}"</p>
         </div>
       )
@@ -127,7 +127,7 @@ class Podcast extends Component {
 
       return (
         <div className='podcast view'>
-          { this.renderPodcastInfo()}
+          { this.renderPodcastInfo() }
           { this.renderEpisodes() }
         </div>
       )

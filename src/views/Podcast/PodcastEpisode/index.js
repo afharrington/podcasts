@@ -39,23 +39,30 @@ class PodcastEpisode extends Component {
   }
 
   render () {
-    const episode = this.state.episode;
+    const episode = this.props.episode;
+    if (episode) {
 
-    return (
-      <div className='podcast-episode'>
-        <p className='podcast-episode-title'>{episode.title}</p>
-        <p className='podcast-episode-duration'>{episode.audioDuration}</p>
-        <p className='podcast-episode-date'>Aired: <Moment format="MM/DD/YYYY" date={episode.publishedDate}/></p>
-        <div className='podcast-episode-play'>
-          <FaPlayCircle  className='podcast-episode-play-button' onClick={this.sendEpisodeToPlayer} />
-          <a className='podcast-go-button' href={episode.sourceUrl} target='_blank' rel='noreferrer no follow'><MdLaunch/></a>
-          {/*
-          <p>Or listen with: <span className='player-selection'>Spotify</span> <FaCog className='podcast-episode-settings-button'/></p> */}
+      return (
+        <div className='podcast-episode'>
+          <p className='podcast-episode-title'>{episode.title}</p>
+          <p className='podcast-episode-duration'>{episode.audioDuration}</p>
+          <p className='podcast-episode-date'>Aired: <Moment format="MM/DD/YYYY" date={episode.publishedDate}/></p>
+          <div className='podcast-episode-play'>
+            <FaPlayCircle  className='podcast-episode-play-button' onClick={this.sendEpisodeToPlayer} />
+            <a className='podcast-go-button' href={episode.sourceUrl} target='_blank' rel='noreferrer no follow'><MdLaunch/></a>
+            {/*
+            <p>Or listen with: <span className='player-selection'>Spotify</span> <FaCog className='podcast-episode-settings-button'/></p> */}
+          </div>
+          { !this.state.collapsed && <p className='podcast-episode-description'>{episode.description}</p>}
+          <p className='podcast-episode-toggle' onClick={this.toggleDescription}>{this.state.collapsed ? 'MORE' : 'HIDE'}</p>
         </div>
-        { !this.state.collapsed && <p className='podcast-episode-description'>{episode.description}</p>}
-        <p className='podcast-episode-toggle' onClick={this.toggleDescription}>{this.state.collapsed ? 'MORE' : 'HIDE'}</p>
-      </div>
-    )
+      )
+
+    } else {
+      return <div></div>
+    }
+
+
   }
 }
 

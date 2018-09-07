@@ -24,7 +24,7 @@ class Header extends Component {
     return (
       <div className='header'>
         <div className='brand'>
-          <NavLink to='/'><h5>CodeCasts</h5></NavLink>
+          <NavLink to='/'><h5>The Developer Podcasts</h5></NavLink>
         </div>
         <nav className='menu'>
           <ul>

@@ -97,10 +97,13 @@ class Podcast extends Component {
       return  (
         <div className='podcast-episodes'>
 
-          <div className='section-title'><h3>Episodes</h3></div>
-           <PodcastEpisode firstEpisode={true} episode={episodes[0]} />
-          { episodesSlice.map(episode => {
-            return <PodcastEpisode firstEpisode={false} key={episode.id} episode={episode}/>
+          <div className='section-title'><h3>Episodes</h3></div>          
+          { episodesSlice.map((episode,index) => {
+            if(index > 0)
+              return <PodcastEpisode firstEpisode={false} key={episode.id} episode={episode}/>
+            else
+              return <PodcastEpisode firstEpisode={true} key={episode.id} episode={episode}/>
+            
           })}
           <p className='more-episodes' onClick={this.renderMoreEpisodes}>More Episodes</p>
 
